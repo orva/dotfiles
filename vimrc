@@ -26,6 +26,7 @@ Bundle 'plasticboy/vim-markdown'
 Bundle 'Blackrush/vim-gocode'
 Bundle 'groenewege/vim-less'
 Bundle 'moll/vim-node'
+Bundle 'Bronson/vim-trailing-whitespace'
 
 " Snipmate..
 Bundle 'MarcWeber/vim-addon-mw-utils'
