@@ -27,6 +27,7 @@ Bundle 'Blackrush/vim-gocode'
 Bundle 'groenewege/vim-less'
 Bundle 'moll/vim-node'
 Bundle 'Bronson/vim-trailing-whitespace'
+Bundle 'Keithbsmiley/investigate.vim'
 
 " Snipmate..
 Bundle 'MarcWeber/vim-addon-mw-utils'
@@ -47,7 +48,7 @@ syntax on
 " Personal settings
 set ignorecase
 set smartcase
-set hlsearch 
+set hlsearch
 set incsearch
 colorscheme zenburn
 
