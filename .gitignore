@@ -3,3 +3,5 @@ canto/log
 emacs.d/auto-save-list
 emacs.d/elpa
 emacs.d/ac-comphist.dat
+canto/fetchlog
+emacs.d/url/
