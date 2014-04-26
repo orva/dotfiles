@@ -30,7 +30,6 @@
 (setq ido-everywhere t)
 (ido-mode 1)
 (setq ido-create-new-buffer 'always)
-(setq ido-file-extensions-order '(".md" ".clj"))
 
 ;; Need for this is ridiculous..
 (define-key global-map (kbd "RET") 'newline-and-indent)
@@ -55,7 +54,7 @@
 (add-hook 'lisp-mode-hook 'paredit-mode)
 (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
 (add-hook 'clojure-mode-hook 'paredit-mode)
-(add-hook 'cider-mode-hook 'paredit-mode)
+(add-hook 'cider-repl-mode-hook 'paredit-mode)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
