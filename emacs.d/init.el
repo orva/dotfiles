@@ -42,9 +42,9 @@
 		    :weight 'normal
 		    :height 83
 		    :width 'normal)
-
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
+(blink-cursor-mode 0)
 
 ;; Hooking
 (add-hook 'clojure-mode-hook 'midje-mode)
