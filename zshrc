@@ -3,6 +3,9 @@ ZSH_THEME="robbyrussell"
 
 plugins=(git mercurial)
 
+# Much faster git in large repos
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+
 source $ZSH/oh-my-zsh.sh
 
 source /bin/virtualenvwrapper.sh
