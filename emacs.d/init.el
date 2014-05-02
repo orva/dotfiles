@@ -14,6 +14,8 @@
   (package-install 'zenburn-theme))
 (unless (package-installed-p 'midje-mode)
   (package-install 'midje-mode))
+(unless (package-installed-p 'rainbow-delimiters)
+  (package-install 'rainbow-delimiters))
 
 ;; Autocomplete
 (require 'auto-complete-config)
@@ -45,9 +47,11 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (blink-cursor-mode 0)
+(show-paren-mode 1)
 
 ;; Hooking
 (add-hook 'clojure-mode-hook 'midje-mode)
+(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
