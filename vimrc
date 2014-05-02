@@ -66,6 +66,7 @@ if has("autocmd")
     au BufWinLeave *.* mkview
     au BufWinEnter *.* silent loadview
     au FileType less setlocal expandtab shiftwidth=2 softtabstop=2
+    au FileType ruby setlocal expandtab shiftwidth=2 softtabstop=2
 endif
 
 if has("cscope")
