@@ -67,6 +67,7 @@ if has("autocmd")
     au BufWinEnter *.* silent loadview
     au FileType less setlocal expandtab shiftwidth=2 softtabstop=2
     au FileType ruby setlocal expandtab shiftwidth=2 softtabstop=2
+    au FileType gitcommit set spell
 endif
 
 if has("cscope")
