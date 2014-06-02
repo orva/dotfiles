@@ -54,6 +54,9 @@ set hlsearch
 set incsearch
 colorscheme zenburn
 
+" Do not split window when opening file/switching buffer from dirty buffer
+set hidden
+
 if has("gui_running")
     set gfn=DejaVu\ Sans\ Mono\ 8
     set go=aegimLt
