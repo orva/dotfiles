@@ -4,7 +4,7 @@ set -o nounset
 set -o errexit
 set -o pipefail
 
-cd $HOME/src/linux
+cd /home/orva/src/linux
 cp --verbose arch/x86/boot/bzImage /boot/vmlinuz-linux-mainline
 make modules_install
 mkinitcpio -p mainline
