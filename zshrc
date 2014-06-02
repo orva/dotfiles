@@ -28,4 +28,5 @@ export GOPATH=$HOME/src/go-workspace
 export PATH=$PATH:$GOPATH/bin
 
 # Path stuff:
+export PATH=$HOME/confs/bin:$PATH
 export PATH=$HOME/bin:$PATH
