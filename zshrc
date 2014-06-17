@@ -8,10 +8,23 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 source $ZSH/oh-my-zsh.sh
 
-source /bin/virtualenvwrapper.sh
-source ~/.nvm/nvm.sh
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+# Interpreter handling tools
+
+if [ -e /bin/virtualenvwrapper.sh ]; then
+	source /bin/virtualenvwrapper.sh
+elif [ -e /etc/bash_completion.d/virtualenvwrapper ]; then
+	# Ubuntu
+	source /etc/bash_completion.d/virtualenvwrapper
+fi
+
+if [ -e ~/.nvm/nvm.sh ]; then
+	source ~/.nvm/nvm.sh
+fi
+
+if [ -e ~/.rbenv ]; then
+	export PATH="$HOME/.rbenv/bin:$PATH"
+	eval "$(rbenv init -)"
+fi
 
 eval `dircolors ~/confs/dircolors.zenburn`
 
