@@ -30,6 +30,7 @@ Bundle 'moll/vim-node'
 Bundle 'jplaut/vim-arduino-ino.git'
 Bundle 'Bronson/vim-trailing-whitespace'
 Bundle 'Keithbsmiley/investigate.vim'
+Bundle 'ekalinin/Dockerfile.vim'
 
 " Snipmate..
 Bundle 'MarcWeber/vim-addon-mw-utils'
