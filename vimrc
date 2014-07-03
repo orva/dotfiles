@@ -86,7 +86,7 @@ endif
 
 " Use 'quickfind' as ctrlp file searcher
 " https://github.com/akojo/quickfind.git
-let g:ctrlp_user_command = 'cd %s && qf -f | grep -Ev "\.o$|^(\.\/)?node_modules"'
+let g:ctrlp_user_command = 'cd %s && qf . | grep -Ev "\.o$|^(\.\/)?node_modules"'
 let g:ctrlp_working_path_mode = 0
 
 let g:vim_markdown_folding_disabled=1
