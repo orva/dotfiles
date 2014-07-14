@@ -31,6 +31,7 @@ Bundle 'jplaut/vim-arduino-ino.git'
 Bundle 'ntpeters/vim-better-whitespace'
 Bundle 'Keithbsmiley/investigate.vim'
 Bundle 'ekalinin/Dockerfile.vim'
+Bundle 'wting/rust.vim'
 
 " Snipmate..
 Bundle 'MarcWeber/vim-addon-mw-utils'
