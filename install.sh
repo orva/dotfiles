@@ -5,14 +5,8 @@ set -o errexit
 set -o pipefail
 
 conf_dir=$PWD
+bin_dir=$HOME/.dotfiles-bin
 
-
-if [ ! -e "$HOME/.dotfiles-bin" ]; then
-	echo -e "linking dotfiles-bin"
-	ln -s $conf_dir/bin $HOME/.dotfiles-bin
-else
-	echo "skip dotfiles-bin, already present"
-fi
 
 echo -e "\n-- configs ---\n"
 
@@ -47,3 +41,30 @@ else
 	echo "skip nvm, already present"
 fi
 
+
+echo -e "\n--- misc ---\n"
+
+
+if [ ! -e "$HOME/.dotfiles-bin" ]; then
+	echo -e "linking dotfiles-bin"
+	ln -s $conf_dir/bin $bin_dir
+else
+	echo "skip dotfiles-bin linking, already present"
+fi
+
+if [ ! -e $bin_dir/qf ]; then
+	echo -e "\ninstalling quickfind\n"
+
+	tmp=$(mktemp -d)
+	trap "rm -rf $tmp; exit" SIGHUP SIGINT SIGTERM
+
+	git clone https://github.com/akojo/quickfind.git $tmp
+	cd $tmp
+	make
+	cp --verbose qf $bin_dir
+	cd $conf_dir
+	rm --recursive --force $tmp
+	echo
+else
+	echo "skip quickfind install, already present"
+fi

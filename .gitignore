@@ -5,3 +5,4 @@ emacs.d/elpa
 emacs.d/ac-comphist.dat
 canto/fetchlog
 emacs.d/url/
+bin/qf
