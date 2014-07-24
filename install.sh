@@ -64,3 +64,11 @@ if [ ! -e $bin_dir/qf ]; then
 else
 	echo "skip quickfind install, already present"
 fi
+
+if [ ! -e "$HOME/.oh-my-zsh" ]; then
+	echo -e "installing oh-my-zsh"
+	git clone https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
+	echo
+else
+	echo "skip oh-my-zsh install, already present"
+fi
