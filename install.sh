@@ -6,11 +6,9 @@ set -o pipefail
 
 conf_dir=$PWD
 bin_dir=$HOME/.dotfiles-bin
-
+configs=( "dircolors.zenburn" "emacs.d" "tmux.conf" "vimperatorrc" "vimrc" "Xresources" "zshrc" )
 
 echo -e "\n-- configs ---\n"
-
-configs=( "dircolors.zenburn" "emacs.d" "tmux.conf" "vimperatorrc" "vimrc" "Xresources" "zshrc" )
 
 for conf in "${configs[@]}"
 do
@@ -41,9 +39,7 @@ else
 	echo "skip nvm, already present"
 fi
 
-
 echo -e "\n--- misc ---\n"
-
 
 if [ ! -e "$HOME/.dotfiles-bin" ]; then
 	echo -e "linking dotfiles-bin"
