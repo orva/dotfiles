@@ -26,7 +26,7 @@ if [ -e ~/.rbenv ]; then
 	eval "$(rbenv init -)"
 fi
 
-eval `dircolors ~/confs/dircolors.zenburn`
+eval `dircolors ~/.dircolors.zenburn`
 
 # for gnugpg
 GPG_TTY=$(tty)
@@ -41,7 +41,7 @@ export GOPATH=$HOME/src/go-workspace
 export PATH=$PATH:$GOPATH/bin
 
 # Path stuff:
-export PATH=$HOME/confs/bin:$PATH
+export PATH=$HOME/.dotfiles-bin:$PATH
 export PATH=$HOME/bin:$PATH
 
 # '=' instead of '==' because of ancient Ubuntu..
