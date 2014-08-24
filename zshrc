@@ -43,6 +43,7 @@ export PATH=$PATH:$GOPATH/bin
 # Path stuff:
 export PATH=$HOME/.dotfiles-bin:$PATH
 export PATH=$HOME/bin:$PATH
+export PATH=$HOME/bin/depot_tools:$PATH
 
 # '=' instead of '==' because of ancient Ubuntu..
 if [ "$COLORTERM" = "gnome-terminal" ] || [ "$COLORTERM" = "xfce4-terminal" ]
