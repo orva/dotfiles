@@ -99,7 +99,7 @@ map <Leader>r :CtrlPMRUFiles<CR>
 map <Leader>fs :cscope find s <C-R>=expand("<cword>")<CR><CR>
 map <leader>fc :cscope find c <C-R>=expand("<cword>")<CR><CR>
 map <leader>fg :cscope find g <C-R>=expand("<cword>")<CR><CR>
-map <Leader>ff :cscope find f <C-R>=expand("<cword>")<CR><CR>
+map <Leader>ff :cscope find f <C-R>=expand("<cfile>")<CR><CR>
 map <Leader>fd :cscope find d <C-R>=expand("<cword>")<CR><CR>
-map <Leader>fi :cscope find i <C-R>=expand("<cword>")<CR><CR>
+map <Leader>fi :cscope find i <C-R>=expand("%")<CR><CR>
 
