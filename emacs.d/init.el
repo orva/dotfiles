@@ -1,37 +1,45 @@
 (require 'package)
 (add-to-list 'package-archives
-    '("marmalade" .
-      "http://marmalade-repo.org/packages/"))
+	     '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives
+	     '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives
+	     '("gnu" ."http://elpa.gnu.org/packages/"))
 (package-initialize)
 
-(unless (package-installed-p 'cider)
-  (package-install 'cider))
-(unless (package-installed-p 'paredit)
-  (package-install 'paredit))
-(unless (package-installed-p 'auto-complete)
-  (package-install 'auto-complete))
-(unless (package-installed-p 'zenburn-theme)
-  (package-install 'zenburn-theme))
-(unless (package-installed-p 'midje-mode)
-  (package-install 'midje-mode))
-(unless (package-installed-p 'rainbow-delimiters)
-  (package-install 'rainbow-delimiters))
+(let ((packages '(cider
+		  paredit
+		  auto-complete
+		  zenburn-theme
+		  midje-mode
+		  rainbow-delimiters
+		  projectile
+		  helm
+		  helm-projectile)))
+  (dolist (pkg packages)
+    (unless (package-installed-p pkg)
+      (package-install pkg))))
 
 ;; Autocomplete
 (require 'auto-complete-config)
 (ac-config-default)
 
+(require 'helm-config)
+(require 'helm-projectile)
+(helm-mode 1)
+
+(projectile-global-mode)
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
+
 (global-set-key (kbd "M-h") 'backward-char)
-(global-set-key (kbd "C-M-h") 'paredit-backward)
 (global-set-key (kbd "M-j") 'next-line)
 (global-set-key (kbd "M-k") 'previous-line)
 (global-set-key (kbd "M-l") 'forward-char)
 (global-set-key (kbd "C-M-l") 'paredit-forward)
-
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-(ido-mode 1)
-(setq ido-create-new-buffer 'always)
+(global-set-key (kbd "C-M-h") 'paredit-backward)
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+(global-set-key (kbd "M-^") 'join-line)
 
 ;; Need for this is ridiculous..
 (define-key global-map (kbd "RET") 'newline-and-indent)
