@@ -38,8 +38,10 @@
 (global-set-key (kbd "M-l") 'forward-char)
 (global-set-key (kbd "C-M-l") 'paredit-forward)
 (global-set-key (kbd "C-M-h") 'paredit-backward)
-(global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "M-^") 'join-line)
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+(global-set-key (kbd "C-c o") 'helm-occur)
+
 
 ;; Need for this is ridiculous..
 (define-key global-map (kbd "RET") 'newline-and-indent)

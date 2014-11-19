@@ -6,4 +6,5 @@ emacs.d/ac-comphist.dat
 canto/fetchlog
 emacs.d/url/
 bin/qf
-emacs.d/emacs.d/projectile-bookmarks.eld
+emacs.d/projectile-bookmarks.eld
+emacs.d/recentf
