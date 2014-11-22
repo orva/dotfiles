@@ -15,7 +15,10 @@
 		  rainbow-delimiters
 		  projectile
 		  helm
-		  helm-projectile)))
+		  helm-projectile
+		  dtrt-indent
+		  ggtags
+		  flycheck)))
   (dolist (pkg packages)
     (unless (package-installed-p pkg)
       (package-install pkg))))
@@ -24,13 +27,21 @@
 (require 'auto-complete-config)
 (ac-config-default)
 
+(require 'dtrt-indent)
+(dtrt-indent-mode 1)
+
 (require 'helm-config)
 (require 'helm-projectile)
 (helm-mode 1)
 
+(require 'yasnippet)
+(yas-global-mode 1)
+
 (projectile-global-mode)
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
+
+(setq flycheck-display-errors-delay 0.2)
 
 (global-set-key (kbd "M-h") 'backward-char)
 (global-set-key (kbd "M-j") 'next-line)
@@ -41,6 +52,7 @@
 (global-set-key (kbd "M-^") 'join-line)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-c o") 'helm-occur)
+(global-set-key (kbd "C-c <SPC>") 'helm-all-mark-rings)
 
 
 ;; Need for this is ridiculous..
@@ -48,8 +60,8 @@
 
 (load-theme 'zenburn t)
 (set-face-attribute 'default nil
-		    :family "DejaVu Sans Mono"
-		    :foundry "unknown"
+		    :family "Source Code Pro"
+		    :foundry "adobe"
 		    :slant 'normal
 		    :weight 'normal
 		    :height 83
@@ -58,6 +70,8 @@
 (scroll-bar-mode -1)
 (blink-cursor-mode 0)
 (show-paren-mode 1)
+
+(setq scroll-conservatively 5)
 
 ;; Hooking
 (add-hook 'clojure-mode-hook 'midje-mode)
@@ -69,6 +83,8 @@
 (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
 (add-hook 'clojure-mode-hook 'paredit-mode)
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
+
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; Save all tempfiles in $TMPDIR/emacs$UID/
 (defconst emacs-tmp-dir (format "%s/%s%s/" temporary-file-directory "emacs" (user-uid)))
@@ -84,7 +100,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes (quote ("dd4db38519d2ad7eb9e2f30bc03fba61a7af49a185edfd44e020aa5345e3dca7" default))))
+ '(blink-cursor-mode nil)
+ '(custom-safe-themes (quote ("dd4db38519d2ad7eb9e2f30bc03fba61a7af49a185edfd44e020aa5345e3dca7" default)))
+ '(show-paren-mode t)
+ '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
