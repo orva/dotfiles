@@ -18,7 +18,8 @@
 		  helm-projectile
 		  dtrt-indent
 		  ggtags
-		  flycheck)))
+		  flycheck
+		  yasnippet)))
   (dolist (pkg packages)
     (unless (package-installed-p pkg)
       (package-install pkg))))
