@@ -9,7 +9,7 @@
 
 (let ((packages '(cider
 		  paredit
-		  auto-complete
+		  company
 		  zenburn-theme
 		  midje-mode
 		  rainbow-delimiters
@@ -19,14 +19,11 @@
 		  dtrt-indent
 		  ggtags
 		  flycheck
-		  yasnippet)))
+		  yasnippet
+		  rust-mode)))
   (dolist (pkg packages)
     (unless (package-installed-p pkg)
       (package-install pkg))))
-
-;; Autocomplete
-(require 'auto-complete-config)
-(ac-config-default)
 
 (require 'dtrt-indent)
 (dtrt-indent-mode 1)
@@ -65,7 +62,7 @@
 		    :foundry "adobe"
 		    :slant 'normal
 		    :weight 'normal
-		    :height 83
+		    :height 72
 		    :width 'normal)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -86,6 +83,7 @@
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;; Save all tempfiles in $TMPDIR/emacs$UID/
 (defconst emacs-tmp-dir (format "%s/%s%s/" temporary-file-directory "emacs" (user-uid)))
