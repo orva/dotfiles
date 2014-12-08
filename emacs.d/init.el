@@ -68,6 +68,7 @@
 (scroll-bar-mode -1)
 (blink-cursor-mode 0)
 (show-paren-mode 1)
+(setq inhibit-splash-screen t)
 
 (setq scroll-conservatively 5)
 
