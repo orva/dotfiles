@@ -20,7 +20,8 @@
 		  ggtags
 		  flycheck
 		  yasnippet
-		  rust-mode)))
+		  rust-mode
+		  toml-mode)))
   (dolist (pkg packages)
     (unless (package-installed-p pkg)
       (package-install pkg))))
@@ -38,6 +39,8 @@
 (projectile-global-mode)
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
+
+(require 'toml-mode)
 
 (setq flycheck-display-errors-delay 0.2)
 
