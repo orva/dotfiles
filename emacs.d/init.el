@@ -21,7 +21,8 @@
 		  flycheck
 		  yasnippet
 		  rust-mode
-		  toml-mode)))
+		  toml-mode
+		  cmake-mode)))
   (dolist (pkg packages)
     (unless (package-installed-p pkg)
       (package-install pkg))))
@@ -41,8 +42,10 @@
 (helm-projectile-on)
 
 (require 'toml-mode)
+(require 'cmake-mode)
 
 (setq flycheck-display-errors-delay 0.2)
+(setq flycheck-clang-language-standard "c++11")
 
 (global-set-key (kbd "M-h") 'backward-char)
 (global-set-key (kbd "M-j") 'next-line)
