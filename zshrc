@@ -56,3 +56,8 @@ elif [ "$COLORTERM" = "rxvt-xpm" ]
 then
 	TERM=rxvt-256color
 fi
+
+
+ec() {
+	emacsclient "$@" &
+}
