@@ -46,6 +46,8 @@ export PATH=$HOME/bin:$PATH
 export PATH=$HOME/bin/depot_tools:$PATH
 export PATH=$HOME/bin/moz-git-tools:$PATH
 
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+
 # '=' instead of '==' because of ancient Ubuntu..
 if [ "$COLORTERM" = "gnome-terminal" ] || [ "$COLORTERM" = "xfce4-terminal" ]
 then
