@@ -22,7 +22,8 @@
 		  yasnippet
 		  rust-mode
 		  toml-mode
-		  cmake-mode)))
+		  cmake-mode
+		  helm-gtags)))
   (dolist (pkg packages)
     (unless (package-installed-p pkg)
       (package-install pkg))))
@@ -57,6 +58,11 @@
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-c o") 'helm-occur)
 (global-set-key (kbd "C-c <SPC>") 'helm-all-mark-rings)
+
+(global-set-key (kbd "M-.") 'helm-gtags-dwim)
+(global-set-key (kbd "M-,") 'helm-gtags-pop-stack)
+(global-set-key (kbd "C-c <") 'helm-gtags-previous-history)
+(global-set-key (kbd "C-c >" ) 'helm-gtags-next-history)
 
 
 ;; Need for this is ridiculous..
@@ -115,6 +121,9 @@
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (add-hook 'after-init-hook 'global-company-mode)
+
+(add-hook 'c-mode-hook 'helm-gtags-mode)
+(add-hook 'c++-mode-hook 'helm-gtags-mode)
 
 ;; Save all tempfiles in $TMPDIR/emacs$UID/
 (defconst emacs-tmp-dir (format "%s/%s%s/" temporary-file-directory "emacs" (user-uid)))
