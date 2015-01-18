@@ -8,3 +8,5 @@ emacs.d/url/
 bin/qf
 emacs.d/projectile-bookmarks.eld
 emacs.d/recentf
+
+emacs.d/.mc-lists.el

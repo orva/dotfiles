@@ -23,7 +23,8 @@
 		  rust-mode
 		  toml-mode
 		  cmake-mode
-		  helm-gtags)))
+		  helm-gtags
+                  multiple-cursors)))
   (dolist (pkg packages)
     (unless (package-installed-p pkg)
       (package-install pkg))))
@@ -48,12 +49,16 @@
 (setq flycheck-display-errors-delay 0.2)
 (setq flycheck-clang-language-standard "c++11")
 
+;; Need for this is ridiculous..
+(define-key global-map (kbd "RET") 'newline-and-indent)
+
 (global-set-key (kbd "M-h") 'backward-char)
 (global-set-key (kbd "M-j") 'next-line)
 (global-set-key (kbd "M-k") 'previous-line)
 (global-set-key (kbd "M-l") 'forward-char)
 (global-set-key (kbd "C-M-l") 'paredit-forward)
 (global-set-key (kbd "C-M-h") 'paredit-backward)
+
 (global-set-key (kbd "M-^") 'join-line)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-c o") 'helm-occur)
@@ -63,9 +68,10 @@
 (global-set-key (kbd "M-,") 'helm-gtags-pop-stack)
 (global-set-key (kbd "C-c <") 'helm-gtags-previous-history)
 (global-set-key (kbd "C-c >" ) 'helm-gtags-next-history)
-;; Need for this is ridiculous..
-(define-key global-map (kbd "RET") 'newline-and-indent)
 
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-*") 'mc/mark-all-like-this)
 
 (load-theme 'zenburn t)
 (set-face-attribute 'default nil
@@ -153,7 +159,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(blink-cursor-mode nil)
- '(custom-safe-themes (quote ("dd4db38519d2ad7eb9e2f30bc03fba61a7af49a185edfd44e020aa5345e3dca7" default)))
+ '(custom-safe-themes
+   (quote
+    ("dd4db38519d2ad7eb9e2f30bc03fba61a7af49a185edfd44e020aa5345e3dca7" default)))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -161,4 +169,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:family "Source Code Pro" :foundry "adobe" :slant normal :weight normal :height 68 :width normal)))))
