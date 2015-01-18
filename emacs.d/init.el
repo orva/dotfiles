@@ -63,10 +63,9 @@
 (global-set-key (kbd "M-,") 'helm-gtags-pop-stack)
 (global-set-key (kbd "C-c <") 'helm-gtags-previous-history)
 (global-set-key (kbd "C-c >" ) 'helm-gtags-next-history)
-
-
 ;; Need for this is ridiculous..
 (define-key global-map (kbd "RET") 'newline-and-indent)
+
 
 (load-theme 'zenburn t)
 (set-face-attribute 'default nil
@@ -88,6 +87,20 @@
 (setq window-combination-resize t)
 (setq scroll-conservatively 5)
 (set-language-environment "UTF-8")
+
+
+;; Default indentations
+
+
+(setq-default indent-tabs-mode nil)
+(setq c-default-style
+      '((java-mode . "java") (awk-mode . "awk") (other . "bsd"))
+      c-basic-offset 4)
+
+(defun my-c-mode-setup ()
+  (subword-mode 1)
+  (c-set-offset 'innamespace 0))
+(add-hook 'c-mode-common-hook 'my-c-mode-setup)
 
 
 ;; Custom stuff
