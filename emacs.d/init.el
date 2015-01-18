@@ -24,7 +24,8 @@
 		  toml-mode
 		  cmake-mode
 		  helm-gtags
-                  multiple-cursors)))
+                  multiple-cursors
+                  expand-region)))
   (dolist (pkg packages)
     (unless (package-installed-p pkg)
       (package-install pkg))))
@@ -72,6 +73,9 @@
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-*") 'mc/mark-all-like-this)
+
+(global-set-key (kbd "M-[") 'er/contract-region)
+(global-set-key (kbd "M-]") 'er/expand-region)
 
 (load-theme 'zenburn t)
 (set-face-attribute 'default nil
