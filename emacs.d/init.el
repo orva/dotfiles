@@ -73,10 +73,34 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (blink-cursor-mode 0)
+
 (show-paren-mode 1)
 (setq inhibit-splash-screen t)
-
+(setq major-mode 'text-mode)
+(defalias 'yes-or-no-p 'y-or-n-p)
+(global-auto-revert-mode t)
+(setq window-combination-resize t)
 (setq scroll-conservatively 5)
+(set-language-environment "UTF-8")
+
+
+;; Custom stuff
+
+
+(defun vj/open-line-after ()
+  (interactive)
+  (end-of-line)
+  (newline-and-indent))
+
+(defun vj/zap-up-to-char (arg char)
+  "Zap up to a character."
+  (interactive "p\ncZap up to char: ")
+  (zap-to-char arg char)
+  (insert char)
+  (forward-char -1))
+
+(global-set-key (kbd "C-o") 'vj/open-line-after)
+(global-set-key (kbd "M-z") 'vj/zap-up-to-char)
 
 ;; Hooking
 (add-hook 'clojure-mode-hook 'midje-mode)
