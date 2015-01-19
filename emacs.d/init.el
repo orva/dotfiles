@@ -25,7 +25,8 @@
 		  cmake-mode
 		  helm-gtags
                   multiple-cursors
-                  expand-region)))
+                  expand-region
+                  markdown-mode)))
   (dolist (pkg packages)
     (unless (package-installed-p pkg)
       (package-install pkg))))
@@ -97,6 +98,9 @@
 (setq window-combination-resize t)
 (setq scroll-conservatively 5)
 (set-language-environment "UTF-8")
+
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 
 ;; Default indentations
