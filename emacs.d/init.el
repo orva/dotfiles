@@ -26,7 +26,8 @@
 		  helm-gtags
                   multiple-cursors
                   expand-region
-                  markdown-mode)))
+                  markdown-mode
+                  irfc)))
   (dolist (pkg packages)
     (unless (package-installed-p pkg)
       (package-install pkg))))
@@ -47,6 +48,10 @@
 
 (require 'toml-mode)
 (require 'cmake-mode)
+
+(require 'irfc)
+(setq irfc-directory "~/Documents/rfcs")
+(setq irfc-assoc-mode t)
 
 (setq flycheck-display-errors-delay 0.2)
 (setq flycheck-clang-language-standard "c++11")
@@ -78,26 +83,7 @@
 (global-set-key (kbd "M-[") 'er/contract-region)
 (global-set-key (kbd "M-]") 'er/expand-region)
 
-(load-theme 'zenburn t)
-(set-face-attribute 'default nil
-		    :family "Source Code Pro"
-		    :foundry "adobe"
-		    :slant 'normal
-		    :weight 'normal
-		    :height 72
-		    :width 'normal)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-(blink-cursor-mode 0)
 
-(show-paren-mode 1)
-(setq inhibit-splash-screen t)
-(setq major-mode 'text-mode)
-(defalias 'yes-or-no-p 'y-or-n-p)
-(global-auto-revert-mode t)
-(setq window-combination-resize t)
-(setq scroll-conservatively 5)
-(set-language-environment "UTF-8")
 
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
@@ -152,6 +138,48 @@
 (add-hook 'c-mode-hook 'helm-gtags-mode)
 (add-hook 'c++-mode-hook 'helm-gtags-mode)
 
+
+;; UI customizations
+
+
+(load-theme 'zenburn t)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(blink-cursor-mode 0)
+
+(show-paren-mode 1)
+(setq inhibit-splash-screen t)
+(setq major-mode 'text-mode)
+(defalias 'yes-or-no-p 'y-or-n-p)
+(global-auto-revert-mode t)
+(setq window-combination-resize t)
+(setq scroll-conservatively 5)
+(set-language-environment "UTF-8")
+
+
+(set-face-attribute 'default nil
+		    :family "Source Code Pro"
+		    :foundry "adobe"
+		    :slant 'normal
+		    :weight 'normal
+		    :height 124
+		    :width 'normal)
+
+(set-face-attribute 'irfc-head-name-face nil
+                    :foreground "navajo white"
+                    :underline t
+                    :weight 'bold)
+(set-face-attribute 'irfc-head-number-face nil
+                    :foreground "navajo white"
+                    :weight 'bold)
+(set-face-attribute 'irfc-requirement-keyword-face nil
+                    :foreground "indian red"
+                    :weight 'bold)
+(set-face-attribute 'irfc-rfc-link-face nil
+                    :foreground "dark cyan"
+                    :weight 'bold)
+
+
 ;; Save all tempfiles in $TMPDIR/emacs$UID/
 (defconst emacs-tmp-dir (format "%s/%s%s/" temporary-file-directory "emacs" (user-uid)))
 (setq backup-directory-alist
@@ -177,4 +205,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Source Code Pro" :foundry "adobe" :slant normal :weight normal :height 68 :width normal)))))
+)
