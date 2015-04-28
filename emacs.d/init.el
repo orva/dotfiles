@@ -7,27 +7,34 @@
 	     '("gnu" ."http://elpa.gnu.org/packages/"))
 (package-initialize)
 
-(let ((packages '(cider
-		  paredit
+(let ((packages '(cmake-mode
 		  company
-		  zenburn-theme
-		  midje-mode
-		  rainbow-delimiters
-		  projectile
-		  helm
-		  helm-projectile
 		  dtrt-indent
-		  ggtags
 		  flycheck
-		  yasnippet
+		  ggtags
+		  helm
+		  helm-gtags
+		  helm-projectile
+		  midje-mode
+		  paredit
+		  projectile
+		  rainbow-delimiters
 		  rust-mode
 		  toml-mode
-		  cmake-mode
-		  helm-gtags
-                  multiple-cursors
+		  yasnippet
+		  zenburn-theme
+                  cider
+                  company-irony
+                  emmet-mode
+                  exec-path-from-shell
                   expand-region
+                  flycheck-irony
+                  irfc
+                  less-css-mode
                   markdown-mode
-                  irfc)))
+                  multiple-cursors
+                  web-mode
+                  irony)))
   (dolist (pkg packages)
     (unless (package-installed-p pkg)
       (package-install pkg))))
@@ -56,6 +63,9 @@
 (setq irfc-directory "~/Documents/rfcs")
 (setq irfc-assoc-mode t)
 
+(require 'emmet-mode)
+(require 'web-mode)
+
 (setq flycheck-display-errors-delay 0.2)
 (setq flycheck-clang-language-standard "c++11")
 
@@ -78,6 +88,7 @@
 (global-set-key (kbd "M-,") 'helm-gtags-pop-stack)
 (global-set-key (kbd "C-c <") 'helm-gtags-previous-history)
 (global-set-key (kbd "C-c >" ) 'helm-gtags-next-history)
+(global-set-key (kbd "C-c g" ) 'helm-gtags-update-tags)
 
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
@@ -86,13 +97,16 @@
 (global-set-key (kbd "M-[") 'er/contract-region)
 (global-set-key (kbd "M-]") 'er/expand-region)
 
-
-
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.jsm\\'" . js-mode))
+
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
 
 
+;;
 ;; Default indentations
+;;
 
 
 (setq-default indent-tabs-mode nil)
@@ -106,8 +120,11 @@
 (add-hook 'c-mode-common-hook 'my-c-mode-setup)
 
 
+;;
 ;; Custom stuff
+;;
 
+(setq helm-gtags-auto-update t)
 
 (defun vj/open-line-after ()
   (interactive)
@@ -124,7 +141,12 @@
 (global-set-key (kbd "C-o") 'vj/open-line-after)
 (global-set-key (kbd "M-z") 'vj/zap-up-to-char)
 
+
+;;
 ;; Hooking
+;;
+
+
 (add-hook 'clojure-mode-hook 'midje-mode)
 (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
 
@@ -138,11 +160,47 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (add-hook 'after-init-hook 'global-company-mode)
 
+(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+(add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
+
 (add-hook 'c-mode-hook 'helm-gtags-mode)
 (add-hook 'c++-mode-hook 'helm-gtags-mode)
 
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
 
+
+;;
+;; irony-mode related setup:
+;;
+
+
+;; replace the `completion-at-point' and `complete-symbol' bindings in
+;; irony-mode's buffers by irony-mode's function
+(defun my-irony-mode-hook ()
+  (define-key irony-mode-map [remap completion-at-point]
+    'irony-completion-at-point-async)
+  (define-key irony-mode-map [remap complete-symbol]
+    'irony-completion-at-point-async))
+(add-hook 'irony-mode-hook 'my-irony-mode-hook)
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
+
+(eval-after-load 'company
+  '(add-to-list 'company-backends 'company-irony))
+
+;; (optional) adds CC special commands to `company-begin-commands' in order to
+;; trigger completion at interesting places, such as after scope operator
+;;     std::|
+(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
+
+
+;;
 ;; UI customizations
+;;
 
 
 (load-theme 'zenburn t)
@@ -198,15 +256,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(blink-cursor-mode nil)
- '(custom-safe-themes
+ '(package-selected-packages
    (quote
-    ("dd4db38519d2ad7eb9e2f30bc03fba61a7af49a185edfd44e020aa5345e3dca7" default)))
- '(show-paren-mode t)
- '(tool-bar-mode nil))
+    (flycheck-irony company-irony zenburn-theme yasnippet web-mode toml-mode rust-mode rainbow-delimiters paredit multiple-cursors midje-mode markdown-mode less-css-mode irfc helm-projectile helm-gtags ggtags flycheck f expand-region exec-path-from-shell emmet-mode dtrt-indent company cmake-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-)
+ )
+(put 'upcase-region 'disabled nil)
