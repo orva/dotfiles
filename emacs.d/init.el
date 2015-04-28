@@ -150,6 +150,7 @@
 (scroll-bar-mode -1)
 (blink-cursor-mode 0)
 
+(column-number-mode t)
 (show-paren-mode 1)
 (setq inhibit-splash-screen t)
 (setq major-mode 'text-mode)
