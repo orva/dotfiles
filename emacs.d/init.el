@@ -32,6 +32,9 @@
     (unless (package-installed-p pkg)
       (package-install pkg))))
 
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
+
 (require 'dtrt-indent)
 (dtrt-indent-mode 1)
 
