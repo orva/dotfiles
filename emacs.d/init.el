@@ -7,8 +7,7 @@
 	     '("gnu" ."http://elpa.gnu.org/packages/"))
 (package-initialize)
 
-(let ((packages '(cmake-mode
-		  company
+(let ((packages '(company
 		  dtrt-indent
 		  flycheck
 		  ggtags
@@ -23,18 +22,21 @@
 		  toml-mode
 		  yasnippet
 		  zenburn-theme
+                  alchemist
                   cider
                   company-irony
+                  elixir-mode
                   emmet-mode
                   exec-path-from-shell
                   expand-region
                   flycheck-irony
                   irfc
+                  irony
                   less-css-mode
                   markdown-mode
                   multiple-cursors
                   web-mode
-                  irony)))
+                  cmake-mode)))
   (dolist (pkg packages)
     (unless (package-installed-p pkg)
       (package-install pkg))))
@@ -258,7 +260,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (flycheck-irony company-irony zenburn-theme yasnippet web-mode toml-mode rust-mode rainbow-delimiters paredit multiple-cursors midje-mode markdown-mode less-css-mode irfc helm-projectile helm-gtags ggtags flycheck f expand-region exec-path-from-shell emmet-mode dtrt-indent company cmake-mode))))
+    (elixir-mode zenburn-theme yasnippet web-mode toml-mode rust-mode rainbow-delimiters paredit multiple-cursors midje-mode markdown-mode less-css-mode irfc helm-projectile helm-gtags ggtags flycheck-irony f expand-region exec-path-from-shell emmet-mode dtrt-indent company-irony cmake-mode alchemist))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
