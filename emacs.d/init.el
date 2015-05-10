@@ -86,12 +86,6 @@
 (global-set-key (kbd "C-c o") 'helm-occur)
 (global-set-key (kbd "C-c <SPC>") 'helm-all-mark-rings)
 
-(global-set-key (kbd "M-.") 'helm-gtags-dwim)
-(global-set-key (kbd "M-,") 'helm-gtags-pop-stack)
-(global-set-key (kbd "C-c <") 'helm-gtags-previous-history)
-(global-set-key (kbd "C-c >" ) 'helm-gtags-next-history)
-(global-set-key (kbd "C-c g" ) 'helm-gtags-update-tags)
-
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-*") 'mc/mark-all-like-this)
@@ -148,6 +142,15 @@
 ;; Hooking
 ;;
 
+(defun gtags-mode-keys ()
+  "Gtags mode keys."
+  (local-set-key (kbd "M-.") 'helm-gtags-dwim)
+  (local-set-key (kbd "M-,") 'helm-gtags-pop-stack)
+  (local-set-key (kbd "C-c <") 'helm-gtags-previous-history)
+  (local-set-key (kbd "C-c >" ) 'helm-gtags-next-history)
+  (local-set-key (kbd "C-c g" ) 'helm-gtags-update-tags))
+
+(add-hook 'helm-gtags-mode-hook 'gtags-mode-keys)
 
 (add-hook 'clojure-mode-hook 'midje-mode)
 (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
