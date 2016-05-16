@@ -96,7 +96,12 @@ let g:ctrlp_user_command = 'cd %s && qf . | grep -Ev "\.pyc$|\.o$|\.so$|.*node_m
 let g:ctrlp_working_path_mode = 0
 
 let g:vim_markdown_folding_disabled=1
+
 let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 map <Leader>c :nohlsearch<CR>
 map <Leader>b :CtrlPBuffer<CR>
