@@ -105,10 +105,16 @@ elseif exists('/home/orva/src/rust/src/')
     let $RUST_SRC_PATH='/home/orva/src/rust/src/'
 endif
 
+function! QuickfOpenFile()
+  let ignores = '"\.pyc$|\.o$|\.so$|.*node_modules|.*bower_components"'
+  let fname = system('qfind -af | grep -Ev ' . ignores . ' | qselect | tr -d "\n"')
+  redraw!
+  execute 'open' fname
+endfunction
 
 map <Leader>c :nohlsearch<CR>
 map <Leader>b :CtrlPBuffer<CR>
-map <Leader>r :CtrlPMRUFiles<CR>
+map <Leader>f :call QuickfOpenFile()<CR>
 map <Leader>fs :cscope find s <C-R>=expand("<cword>")<CR><CR>
 map <leader>fc :cscope find c <C-R>=expand("<cword>")<CR><CR>
 map <leader>fg :cscope find g <C-R>=expand("<cword>")<CR><CR>
