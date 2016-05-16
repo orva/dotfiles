@@ -103,6 +103,14 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+let g:racer_cmd = 'racer'
+if exists('/Users/orva/src/rust/src/')
+    let $RUST_SRC_PATH='/Users/orva/src/rust/src/'
+elseif exists('/home/orva/src/rust/src/')
+    let $RUST_SRC_PATH='/home/orva/src/rust/src/'
+endif
+
+
 map <Leader>c :nohlsearch<CR>
 map <Leader>b :CtrlPBuffer<CR>
 map <Leader>r :CtrlPMRUFiles<CR>
