@@ -57,7 +57,7 @@ if [ ! -e $bin_dir/qf ]; then
 	git clone https://github.com/akojo/quickfind.git $tmp
 	cd $tmp
 	make
-	cp --verbose qf $bin_dir
+	cp --verbose qfind qselect $bin_dir
 	cd $conf_dir
 	rm --recursive --force $tmp
 	echo
