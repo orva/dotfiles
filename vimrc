@@ -7,39 +7,43 @@ endif
 set nocompatible " be iMproved
 filetype off " required!
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-sleuth'
-Bundle 'tpope/vim-sensible'
-Bundle 'tpope/vim-eunuch'
-Bundle 'kien/ctrlp.vim'
-Bundle 'Rip-Rip/clang_complete'
-Bundle 'mattn/emmet-vim'
-Bundle 'othree/html5.vim'
-Bundle 'scrooloose/syntastic'
-Bundle 'elixir-lang/vim-elixir'
-Bundle 'pangloss/vim-javascript'
-Bundle 'mxw/vim-jsx'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'Blackrush/vim-gocode'
-Bundle 'groenewege/vim-less'
-Bundle 'moll/vim-node'
-Bundle 'jplaut/vim-arduino-ino.git'
-Bundle 'ntpeters/vim-better-whitespace'
-Bundle 'Keithbsmiley/investigate.vim'
-Bundle 'ekalinin/Dockerfile.vim'
-Bundle 'wting/rust.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-sleuth'
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-eunuch'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Rip-Rip/clang_complete'
+Plugin 'mattn/emmet-vim'
+Plugin 'othree/html5.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'Blackrush/vim-gocode'
+Plugin 'groenewege/vim-less'
+Plugin 'moll/vim-node'
+Plugin 'jplaut/vim-arduino-ino.git'
+Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'Keithbsmiley/investigate.vim'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'wting/rust.vim'
+Plugin 'racer-rust/vim-racer'
+
 
 " Snipmate..
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'garbas/vim-snipmate'
-Bundle 'honza/vim-snippets'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
 
-Bundle 'jnurmine/Zenburn'
+Plugin 'jnurmine/Zenburn'
+
+call vundle#end()
 
 if exists("s:bootstrap") && s:bootstrap
     unlet s:bootstrap
