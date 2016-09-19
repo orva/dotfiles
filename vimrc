@@ -82,7 +82,7 @@ if has("autocmd")
     au FileType less setlocal expandtab shiftwidth=2 softtabstop=2
     au FileType ruby setlocal expandtab shiftwidth=2 softtabstop=2
     au FileType javascript setlocal expandtab shiftwidth=2 softtabstop=2
-    au FileType gitcommit set spell
+    au FileType gitcommit,markdown set spell
     au BufWritePost *.c,*.cpp,*.c++,*.h,*.hpp :call UpdateGtagSymbols()
 
     au FileType rust nmap <leader>gg :call racer#GoToDefinition()<CR>
