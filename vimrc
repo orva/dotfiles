@@ -79,6 +79,7 @@ if has("autocmd")
     au FileType ruby setlocal expandtab shiftwidth=2 softtabstop=2
     au FileType javascript setlocal expandtab shiftwidth=2 softtabstop=2
     au FileType gitcommit set spell
+    au BufWritePost *.c,*.cpp,*.c++,*.h,*.hpp :call UpdateGtagSymbols()
 endif
 
 if has("cscope")
@@ -122,3 +123,9 @@ map <Leader>ff :cscope find f <C-R>=expand("<cfile>")<CR><CR>
 map <Leader>fd :cscope find d <C-R>=expand("<cword>")<CR><CR>
 map <Leader>fi :cscope find i <C-R>=expand("%")<CR><CR>
 
+
+function UpdateGtagSymbols()
+    if filereadable("GTAGS")
+        silent !global -u
+    endif
+endfunction
