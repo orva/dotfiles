@@ -106,7 +106,7 @@ elseif exists('/home/orva/src/rust/src/')
 endif
 
 function! QuickfOpenFile()
-  let ignores = '"\.pyc$|\.o$|\.so$|.*node_modules|.*bower_components"'
+  let ignores = '"\.swp$|\.swo$|\.obj$|\.pp$|\.d$|\.pyc$|\.o$|\.so$|.*node_modules|.*bower_components|\.git|\.*target"'
   let fname = system('qfind -af | grep -Ev ' . ignores . ' | qselect | tr -d "\n"')
   redraw!
   execute 'open' fname
