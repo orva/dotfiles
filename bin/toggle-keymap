@@ -1,0 +1,27 @@
+#!/bin/bash
+
+set -o nounset
+set -o errexit
+set -o pipefail
+
+current=$(setxkbmap -query | grep layout | awk '{print $2}')
+
+
+notify() {
+    msg=$1
+    notify-send "$msg"                      \
+        --icon=preferences-desktop-keyboard \
+        --expire-time=100                   \
+        --hint=string:x-canonical-private-synchronous:sleep
+
+}
+
+case "$current" in
+    fi)
+        setxkbmap -layout us -option ctrl:nocaps
+        notify "us"
+        ;;
+    *)
+        setxkbmap -layout fi -option ctrl:nocaps
+        notify "fi"
+esac
