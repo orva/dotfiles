@@ -33,6 +33,7 @@ Plugin 'Keithbsmiley/investigate.vim'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'wting/rust.vim'
 Plugin 'racer-rust/vim-racer'
+Plugin 'mileszs/ack.vim'
 
 
 " Snipmate..
@@ -90,6 +91,10 @@ if has("cscope")
     if filereadable("GTAGS")
         cscope add ./GTAGS
     endif
+endif
+
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
 endif
 
 let g:vim_markdown_folding_disabled=1
