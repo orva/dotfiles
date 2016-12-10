@@ -104,6 +104,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_enable_balloons = 1
+let g:syntastic_loc_list_height = 3
 
 let g:racer_cmd = 'racer'
 if exists('/Users/orva/src/rust/src/')
