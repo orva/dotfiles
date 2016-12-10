@@ -58,6 +58,7 @@ set ignorecase
 set smartcase
 set hlsearch
 set incsearch
+
 colorscheme zenburn
 
 " Do not split window when opening file/switching buffer from dirty buffer
@@ -130,5 +131,7 @@ function QuickfOpenFile()
   let ignores = '"\.swp$|\.swo$|\.obj$|\.pp$|\.d$|\.pyc$|\.o$|\.so$|.*node_modules|.*bower_components|\.git|\.*target"'
   let fname = system('qfind -af | grep -Ev ' . ignores . ' | qselect | tr -d "\n"')
   redraw!
-  execute 'open' fname
+  if !empty(fname)
+    execute 'open' fname
+  endif
 endfunction
