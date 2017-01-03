@@ -36,6 +36,7 @@ Plugin 'cespare/vim-toml'
 Plugin 'mileszs/ack.vim'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+Plugin 'mustache/vim-mustache-handlebars'
 
 
 " Snipmate..
