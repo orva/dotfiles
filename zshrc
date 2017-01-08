@@ -51,6 +51,8 @@ export PATH=$HOME/bin/moz-git-tools:$PATH
 
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
+export RUST_SRC_PATH=$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
+
 # '=' instead of '==' because of ancient Ubuntu..
 if [ "$COLORTERM" = "gnome-terminal" ] || [ "$COLORTERM" = "xfce4-terminal" ]
 then
