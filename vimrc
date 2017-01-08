@@ -15,7 +15,6 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-eunuch'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'Rip-Rip/clang_complete'
 Plugin 'mattn/emmet-vim'
 Plugin 'othree/html5.vim'
@@ -34,6 +33,8 @@ Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'wting/rust.vim'
 Plugin 'racer-rust/vim-racer'
 Plugin 'mileszs/ack.vim'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 
 
 " Snipmate..
@@ -122,8 +123,8 @@ elseif exists('/home/orva/src/rust/src/')
 endif
 
 map <Leader>c :nohlsearch<CR>
-map <Leader>b :CtrlPBuffer<CR>
-map <Leader>f :call QuickfOpenFile()<CR>
+map <Leader>b :Buffers<CR>
+map <Leader>f :Files<CR>
 
 
 " Function definitions
@@ -133,13 +134,4 @@ function UpdateGtagSymbols()
     if filereadable("GTAGS")
         silent !global -u
     endif
-endfunction
-
-function QuickfOpenFile()
-  let ignores = '"\.swp$|\.swo$|\.obj$|\.pp$|\.d$|\.pyc$|\.o$|\.so$|.*node_modules|.*bower_components|\.git|\.*target"'
-  let fname = system('qfind -af | grep -Ev ' . ignores . ' | qselect | tr -d "\n"')
-  redraw!
-  if !empty(fname)
-    execute 'open' fname
-  endif
 endfunction
