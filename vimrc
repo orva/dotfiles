@@ -82,6 +82,13 @@ if has("autocmd")
     au FileType javascript setlocal expandtab shiftwidth=2 softtabstop=2
     au FileType gitcommit set spell
     au BufWritePost *.c,*.cpp,*.c++,*.h,*.hpp :call UpdateGtagSymbols()
+
+    au FileType c,cpp nmap <Leader>gs :cscope find s <C-R>=expand("<cword>")<CR><CR>
+    au FileType c,cpp nmap <leader>gc :cscope find c <C-R>=expand("<cword>")<CR><CR>
+    au FileType c,cpp nmap <leader>gg :cscope find g <C-R>=expand("<cword>")<CR><CR>
+    au FileType c,cpp nmap <Leader>gf :cscope find f <C-R>=expand("<cfile>")<CR><CR>
+    au FileType c,cpp nmap <Leader>gd :cscope find d <C-R>=expand("<cword>")<CR><CR>
+    au FileType c,cpp nmap <Leader>gi :cscope find i <C-R>=expand("%")<CR><CR>
 endif
 
 if has("cscope")
@@ -117,12 +124,6 @@ endif
 map <Leader>c :nohlsearch<CR>
 map <Leader>b :CtrlPBuffer<CR>
 map <Leader>f :call QuickfOpenFile()<CR>
-map <Leader>fs :cscope find s <C-R>=expand("<cword>")<CR><CR>
-map <leader>fc :cscope find c <C-R>=expand("<cword>")<CR><CR>
-map <leader>fg :cscope find g <C-R>=expand("<cword>")<CR><CR>
-map <Leader>ff :cscope find f <C-R>=expand("<cfile>")<CR><CR>
-map <Leader>fd :cscope find d <C-R>=expand("<cword>")<CR><CR>
-map <Leader>fi :cscope find i <C-R>=expand("%")<CR><CR>
 
 
 " Function definitions
