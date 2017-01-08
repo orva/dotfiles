@@ -84,6 +84,9 @@ if has("autocmd")
     au FileType gitcommit set spell
     au BufWritePost *.c,*.cpp,*.c++,*.h,*.hpp :call UpdateGtagSymbols()
 
+    au FileType rust nmap <leader>gg :call racer#GoToDefinition()<CR>
+    au FileType rust nmap <leader>gd :call racer#ShowDocumentation()<CR>
+
     au FileType c,cpp nmap <Leader>gs :cscope find s <C-R>=expand("<cword>")<CR><CR>
     au FileType c,cpp nmap <leader>gc :cscope find c <C-R>=expand("<cword>")<CR><CR>
     au FileType c,cpp nmap <leader>gg :cscope find g <C-R>=expand("<cword>")<CR><CR>
@@ -116,11 +119,6 @@ let g:syntastic_enable_balloons = 1
 let g:syntastic_loc_list_height = 3
 
 let g:racer_cmd = 'racer'
-if exists('/Users/orva/src/rust/src/')
-    let $RUST_SRC_PATH='/Users/orva/src/rust/src/'
-elseif exists('/home/orva/src/rust/src/')
-    let $RUST_SRC_PATH='/home/orva/src/rust/src/'
-endif
 
 map <Leader>c :nohlsearch<CR>
 map <Leader>b :Buffers<CR>
