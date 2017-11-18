@@ -37,6 +37,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'aldafu/vim-widl'
 
 
 " Snipmate..
@@ -46,6 +47,8 @@ Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 
 Plugin 'jnurmine/Zenburn'
+Plugin 'romainl/Apprentice'
+Plugin 'noahfrederick/vim-hemisu'
 
 call vundle#end()
 
@@ -64,6 +67,9 @@ set hlsearch
 set incsearch
 
 colorscheme zenburn
+" colorscheme apprentice
+" colorscheme hemisu
+set background=dark
 
 " Do not split window when opening file/switching buffer from dirty buffer
 set hidden
@@ -84,6 +90,7 @@ if has("autocmd")
     au FileType ruby setlocal expandtab shiftwidth=2 softtabstop=2
     au FileType javascript setlocal expandtab shiftwidth=2 softtabstop=2
     au FileType gitcommit,markdown set spell
+    au FileType sql setlocal expandtab shiftwidth=2 softtabstop=2
     au BufWritePost *.c,*.cpp,*.c++,*.h,*.hpp :call UpdateGtagSymbols()
 
     au FileType rust nmap <leader>gg :call racer#GoToDefinition()<CR>
@@ -113,6 +120,8 @@ endif
 let g:vim_markdown_folding_disabled=1
 
 let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_rust_checkers = ['rustc']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
