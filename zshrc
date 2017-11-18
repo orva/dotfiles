@@ -48,6 +48,8 @@ export PATH=$HOME/.dotfiles-bin:$PATH
 export PATH=$HOME/bin:$PATH
 export PATH=$HOME/bin/depot_tools:$PATH
 export PATH=$HOME/bin/moz-git-tools:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
