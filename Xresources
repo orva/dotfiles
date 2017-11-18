@@ -3,19 +3,19 @@ Xft.antialias:	true
 Xft.hinting:	true
 Xft.hintstyle:	hintslight
 
-xterm*faceName:			xft:DejaVu Sans Mono:pixelsize=10
-urxvt*font:			xft:DejaVu Sans Mono:pixelsize=10
-urxvt*letterSpace:		-1
-urxvt*scrollBar:		false
+xterm*faceName:    xft:DejaVu Sans Mono:pixelsize=12
+urxvt*font:        xft:DejaVu Sans Mono:pixelsize=12
+urxvt*letterSpace: -1
+urxvt*scrollBar:   false
 
 URxvt.perl-ext-common:  default,matcher,clipboard,url-select
-URxvt.url-launcher:      /usr/bin/firefox
+URxvt.url-launcher:     /usr/bin/firefox
 URxvt.matcher.button:   1
 
 URxvt.keysym.C-Delete:  perl:matcher:last
 URxvt.keysym.M-Delete:  perl:matcher:list
 
-urxvt*shading:   0
+urxvt*shading:  0
 urxvt*fading:   0
 urxvt*transparent: false
 
