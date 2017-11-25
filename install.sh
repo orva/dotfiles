@@ -6,7 +6,7 @@ set -o pipefail
 
 conf_dir=$PWD
 bin_dir=$HOME/.dotfiles-bin
-configs=( "dircolors.zenburn" "emacs.d" "tmux.conf" "vimperatorrc" "vimrc" "Xresources" "zshrc" "psqlrc")
+configs=( "dircolors.zenburn" "emacs.d" "tmux.conf" "vimperatorrc" "vimrc" "Xresources" "zshrc" "psqlrc" "i3" "i3status.conf")
 
 echo -e "\n-- configs ---\n"
 
