@@ -1,5 +1,0 @@
-PRESETS=('mainline')
-
-mainline_kver="/boot/vmlinuz-linux-mainline"
-mainline_config="/etc/mkinitcpio.conf"
-mainline_image="/boot/initramfs-linux-mainline.img"
