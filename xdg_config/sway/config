@@ -20,7 +20,7 @@ set $term gnome-terminal
 set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
 # device specific settings
-include "~/.config/sway/$(hostname)"
+include "~/.config/sway/$(cat /etc/hostname)"
 
 #
 # Example configuration:

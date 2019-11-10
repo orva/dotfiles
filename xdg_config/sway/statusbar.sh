@@ -4,7 +4,7 @@ set -o nounset
 set -o errexit
 set -o pipefail
 
-HOST=$(hostname)
+HOST=$(cat /etc/hostname)
 
 while true; do
     if [[ $HOST = "papaya" ]]; then
