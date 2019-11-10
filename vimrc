@@ -59,6 +59,8 @@ if has("nvim")
   \})
   let g:LanguageClient_serverCommands = {
   \   'rust': ['/usr/bin/rustup', 'run', 'stable', 'rls'],
+  \   'sh': ['npx', 'bash-language-server', 'start'],
+  \   'bash': ['npx', 'bash-language-server', 'start'],
   \   'javascript': ['npx', 'javascript-typescript-stdio'],
   \   'javascript.tsx': ['npx', 'javascript-typescript-stdio'],
   \   'typescript': ['npx', 'javascript-typescript-stdio'],
