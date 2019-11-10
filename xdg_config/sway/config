@@ -18,13 +18,9 @@ set $term gnome-terminal
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $font 'DejaVu Sans Mono 7'
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-# output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg /home/orva/Pictures/bg/jungle-stars.jpg fill
+# device specific settings
+include "~/.config/sway/$(hostname)"
 
 #
 # Example configuration:

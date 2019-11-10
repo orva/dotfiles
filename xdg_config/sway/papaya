@@ -1,0 +1,5 @@
+set $font 'DejaVu Sans Mono 8'
+
+# output * bg /home/orva/images/wallpapers/wallhaven-39600.jpg fill
+output * bg /home/orva/images/wallpapers/wallhaven-386441.jpg fill
+# output * bg /home/orva/images/wallpapers/wallhaven-84746.jpg fill
