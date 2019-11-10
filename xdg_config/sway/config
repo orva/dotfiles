@@ -70,11 +70,26 @@ input "type:pointer" {
     accel_profile flat
 }
 
+input "type:touch" {
+    accel_profile adaptive
+}
+
+input "2:14:ETPS/2_Elantech_TrackPoint" {
+    accel_profile adaptive
+}
+
 ### Key bindings
     bindsym $mod+Print exec grim -g "$(slurp)"  $HOME/Pictures/"$(date +'%Y-%m-%d_%k-%M-%S')"-screenshot.png
     bindsym $mod+F12 exec $HOME/bin/volume.sh up
     bindsym $mod+F11 exec $HOME/bin/volume.sh down
     bindsym $mod+F10 exec $HOME/bin/volume.sh mute-toggle
+
+    bindsym XF86AudioRaiseVolume exec $HOME/bin/volume.sh up
+    bindsym XF86AudioLowerVolume exec $HOME/bin/volume.sh down
+    bindsym XF86AudioMute exec $HOME/bin/volume.sh mute-toggle
+
+    bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+    bindsym XF86MonBrightnessUp exec brightnessctl set 10%+
 #
 # Basics:
 #
