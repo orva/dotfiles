@@ -1,5 +1,4 @@
 \x auto
 \pset null ∅
 \pset border 2
-\pset linestyle unicode
 \set ON_ERROR_ROLLBACK interactive
