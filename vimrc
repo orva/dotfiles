@@ -8,11 +8,6 @@ elseif empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-let g:deoplete#enable_at_startup = 1
-let g:airline#extensions#ale#enabled = 1
-let g:gruvbox_italic = 1
-let g:LanguageClient_diagnosticsSignsMax = v:null
-
 call plug#begin('~/.vim/plugged')
 
 Plug 'morhetz/gruvbox'
@@ -40,6 +35,12 @@ else
 endif
 
 call plug#end()
+
+
+let g:deoplete#enable_at_startup = 1
+let g:airline#extensions#ale#enabled = 1
+let g:gruvbox_italic = 1
+let g:LanguageClient_diagnosticsSignsMax = v:null
 
 colorscheme gruvbox
 set background=dark
