@@ -23,3 +23,4 @@ do
         pactl set-sink-mute "$SINK" toggle
     fi
 done <<< "$SINKS"
+

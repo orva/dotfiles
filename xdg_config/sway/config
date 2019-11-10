@@ -83,6 +83,7 @@ input "2:14:ETPS/2_Elantech_TrackPoint" {
     bindsym XF86AudioRaiseVolume exec $HOME/bin/volume.sh up
     bindsym XF86AudioLowerVolume exec $HOME/bin/volume.sh down
     bindsym XF86AudioMute exec $HOME/bin/volume.sh mute-toggle
+    bindsym XF86AudioMicMute exec $HOME/bin/microphone-toggle.sh
 
     bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
     bindsym XF86MonBrightnessUp exec brightnessctl set 10%+
