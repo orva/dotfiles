@@ -75,8 +75,6 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
