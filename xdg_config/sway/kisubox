@@ -1,0 +1,2 @@
+set $font 'DejaVu Sans Mono 7'
+output * bg ~/Pictures/wallpapers/jungle-stars.jpg fill
