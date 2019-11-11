@@ -79,6 +79,7 @@ input "2:14:ETPS/2_Elantech_TrackPoint" {
     bindsym $mod+F12 exec $HOME/bin/volume.sh up
     bindsym $mod+F11 exec $HOME/bin/volume.sh down
     bindsym $mod+F10 exec $HOME/bin/volume.sh mute-toggle
+    bindsym $mod+F9 exec $HOME/bin/microphone-toggle.sh
 
     bindsym XF86AudioRaiseVolume exec $HOME/bin/volume.sh up
     bindsym XF86AudioLowerVolume exec $HOME/bin/volume.sh down
