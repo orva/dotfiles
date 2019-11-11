@@ -10,7 +10,7 @@ if [[ "$CMD" != "up" ]] && [[ "$CMD" != "down" ]] && [[ "$CMD" != "mute-toggle" 
     exit 1
 fi
 
-SINKS=$(pactl list short sinks | grep -v hdmi | cut -f 1)
+SINKS=$(pactl list short sinks | egrep -vi "(hdmi|nuforce)" | cut -f 1)
 while read -r SINK
 do
     if [[ "$CMD" == "up" ]]; then
