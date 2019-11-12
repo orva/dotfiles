@@ -30,6 +30,9 @@ endif
 if filereadable('/usr/share/vim/vimfiles/plugin/fzf.vim')
   Plug '/usr/share/vim/vimfiles/plugin/fzf.vim'
   Plug 'junegunn/fzf.vim'
+elseif filereadable(expand('$HOME/.fzf/plugin/fzf.vim'))
+  Plug '~/.fzf/plugin/fzf.vim'
+  Plug 'junegunn/fzf.vim'
 else
   echo 'fzf Plug configuration missing!'
 endif
