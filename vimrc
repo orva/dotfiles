@@ -83,8 +83,23 @@ if has("nvim")
   nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 endif
 
+function ToggleGutter()
+  if &relativenumber
+    set norelativenumber
+    set signcolumn=no
+  else
+    set relativenumber
+    set signcolumn=yes
+  endif
+endfunction
+
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 nmap <silent> <C-b> :Buffers<CR>
 nmap <silent> <C-p> :GFiles<CR>
 nmap <silent> <leader>p :Files<CR>
+nmap <silent> <leader>g :call ToggleGutter()<CR>
+nmap <silent> <leader>g :call ToggleGutter()<CR>
+nmap <silent> <leader>c :nohlsearch<CR>
+nmap <silent> <leader>f :ALEFix<CR>
+
