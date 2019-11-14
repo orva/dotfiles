@@ -17,7 +17,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'dense-analysis/ale'
 
 Plug 'leafgarland/typescript-vim'
-Plug 'ianks/vim-tsx'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'maxmellon/vim-jsx-pretty'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -65,14 +66,14 @@ if has("nvim")
   \   'sh': ['npx', 'bash-language-server', 'start'],
   \   'bash': ['npx', 'bash-language-server', 'start'],
   \   'javascript': ['npx', 'javascript-typescript-stdio'],
-  \   'javascript.tsx': ['npx', 'javascript-typescript-stdio'],
+  \   'javascript.jsx': ['npx', 'javascript-typescript-stdio'],
   \   'typescript': ['npx', 'javascript-typescript-stdio'],
   \   'typescript.tsx': ['npx', 'javascript-typescript-stdio'],
   \}
   let g:ale_fixers = {
   \   '*': ['trim_whitespace'],
   \   'javascript': ['prettier', 'eslint'],
-  \   'javascript.tsx': ['prettier', 'eslint'],
+  \   'javascript.jsx': ['prettier', 'eslint'],
   \   'typescript': ['prettier', 'eslint'],
   \   'typescript.tsx': ['prettier', 'eslint'],
   \}
