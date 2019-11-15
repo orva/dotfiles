@@ -75,6 +75,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
+setopt HIST_IGNORE_SPACE
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
