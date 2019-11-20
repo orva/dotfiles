@@ -40,15 +40,8 @@ endif
 
 call plug#end()
 
-
-let g:deoplete#enable_at_startup = 1
-let g:airline#extensions#ale#enabled = 1
-let g:gruvbox_italic = 1
-let g:LanguageClient_diagnosticsSignsMax = v:null
-
 colorscheme gruvbox
 set background=dark
-
 set signcolumn=yes
 set hidden
 set relativenumber
@@ -57,7 +50,13 @@ set smartcase
 set incsearch
 set termguicolors
 
+let g:airline#extensions#ale#enabled = 1
+let g:gruvbox_italic = 1
+
 if has("nvim")
+  let g:deoplete#enable_at_startup = 1
+  let g:LanguageClient_diagnosticsSignsMax = v:null
+
   call deoplete#custom#option('sources', {
   \   '_': ['LanguageClient'],
   \})
@@ -70,18 +69,20 @@ if has("nvim")
   \   'typescript': ['npx', 'javascript-typescript-stdio'],
   \   'typescript.tsx': ['npx', 'javascript-typescript-stdio'],
   \}
-  let g:ale_fixers = {
-  \   '*': ['trim_whitespace'],
-  \   'javascript': ['prettier', 'eslint'],
-  \   'javascript.jsx': ['prettier', 'eslint'],
-  \   'typescript': ['prettier', 'eslint'],
-  \   'typescript.tsx': ['prettier', 'eslint'],
-  \}
 
   nnoremap <F5> :call LanguageClient_contextMenu()<CR>
   nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
   nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 endif
+
+let g:ale_fixers = {
+ \   '*': ['trim_whitespace'],
+ \   'javascript': ['prettier', 'eslint'],
+ \   'javascript.jsx': ['prettier', 'eslint'],
+ \   'typescript': ['prettier', 'eslint'],
+ \   'typescript.tsx': ['prettier', 'eslint'],
+ \}
+
 
 function ToggleGutter()
   if &relativenumber
