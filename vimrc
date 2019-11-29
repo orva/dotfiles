@@ -19,6 +19,7 @@ Plug 'dense-analysis/ale'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'mustache/vim-mustache-handlebars'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -56,6 +57,9 @@ let g:gruvbox_italic = 1
 if has("nvim")
   let g:deoplete#enable_at_startup = 1
   let g:LanguageClient_diagnosticsSignsMax = v:null
+  let g:LanguageClient_loggingLevel = "Error"
+  let g:LanguageClient_windowLogMessageLevel = "Error"
+
 
   call deoplete#custom#option('sources', {
   \   '_': ['LanguageClient'],
@@ -82,6 +86,11 @@ let g:ale_fixers = {
  \   'typescript': ['prettier', 'eslint'],
  \   'typescript.tsx': ['prettier', 'eslint'],
  \}
+
+let g:ale_linters_ignore = {
+ \   'typescript': ['tslint'],
+ \}
+
 
 
 function ToggleGutter()
