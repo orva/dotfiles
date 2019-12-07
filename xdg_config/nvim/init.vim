@@ -37,6 +37,9 @@ endif
 
 call plug#end()
 
+" for vim, to be sure
+filetype plugin indent on
+
 colorscheme gruvbox
 set background=dark
 set signcolumn=yes
