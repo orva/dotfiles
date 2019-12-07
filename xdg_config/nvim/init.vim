@@ -49,17 +49,22 @@ set termguicolors
 
 let g:airline#extensions#ale#enabled = 1
 let g:gruvbox_italic = 1
+let g:ale_fixers = {
+ \   '*': ['trim_whitespace'],
+ \   'javascript': ['prettier', 'eslint'],
+ \   'javascript.jsx': ['prettier', 'eslint'],
+ \   'typescript': ['prettier', 'eslint'],
+ \   'typescript.tsx': ['prettier', 'eslint'],
+ \}
+let g:ale_linters_ignore = {
+ \   'typescript': ['tslint'],
+ \}
 
 if has("nvim")
   let g:deoplete#enable_at_startup = 1
   let g:LanguageClient_diagnosticsSignsMax = v:null
   let g:LanguageClient_loggingLevel = "Error"
   let g:LanguageClient_windowLogMessageLevel = "Error"
-
-
-  call deoplete#custom#option('sources', {
-  \   '_': ['LanguageClient'],
-  \})
   let g:LanguageClient_serverCommands = {
   \   'rust': ['/usr/bin/rustup', 'run', 'stable', 'rls'],
   \   'sh': ['npx', 'bash-language-server', 'start'],
@@ -70,25 +75,15 @@ if has("nvim")
   \   'typescript.tsx': ['npx', 'javascript-typescript-stdio'],
   \}
 
+  call deoplete#custom#option('sources', {
+  \   '_': ['LanguageClient'],
+  \})
+
   nnoremap <F5> :call LanguageClient_contextMenu()<CR>
   nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
   nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
   nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 endif
-
-let g:ale_fixers = {
- \   '*': ['trim_whitespace'],
- \   'javascript': ['prettier', 'eslint'],
- \   'javascript.jsx': ['prettier', 'eslint'],
- \   'typescript': ['prettier', 'eslint'],
- \   'typescript.tsx': ['prettier', 'eslint'],
- \}
-
-let g:ale_linters_ignore = {
- \   'typescript': ['tslint'],
- \}
-
-
 
 function ToggleGutter()
   if &relativenumber
@@ -105,7 +100,6 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 nmap <silent> <C-b> :Buffers<CR>
 nmap <silent> <C-p> :GFiles<CR>
 nmap <silent> <leader>p :Files<CR>
-nmap <silent> <leader>g :call ToggleGutter()<CR>
 nmap <silent> <leader>g :call ToggleGutter()<CR>
 nmap <silent> <leader>c :nohlsearch<CR>
 nmap <silent> <leader>f :ALEFix<CR>
