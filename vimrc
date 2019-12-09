@@ -13,6 +13,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'dense-analysis/ale'
 
@@ -112,4 +113,3 @@ nmap <silent> <leader>g :call ToggleGutter()<CR>
 nmap <silent> <leader>g :call ToggleGutter()<CR>
 nmap <silent> <leader>c :nohlsearch<CR>
 nmap <silent> <leader>f :ALEFix<CR>
-
