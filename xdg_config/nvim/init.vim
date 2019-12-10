@@ -61,6 +61,7 @@ let g:ale_fixers = {
  \}
 let g:ale_linters_ignore = {
  \   'typescript': ['tslint'],
+ \   'typescript.tsx': ['tslint'],
  \}
 
 if has("nvim")
