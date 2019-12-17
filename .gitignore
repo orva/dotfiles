@@ -1,14 +1,1 @@
-canto/feeds
-canto/log
-emacs.d/auto-save-list
-emacs.d/elpa
-emacs.d/ac-comphist.dat
-canto/fetchlog
-emacs.d/url/
-bin/qf
-emacs.d/projectile-bookmarks.eld
-emacs.d/recentf
-
-emacs.d/.mc-lists.el
-emacs.d/projectile.cache
-emacs.d/irony
+xdg_config/nvim/plugged/
