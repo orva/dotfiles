@@ -12,6 +12,7 @@ Plug 'tpope/vim-sensible'
 Plug 'vim-airline/vim-airline'
 Plug 'dense-analysis/ale'
 
+Plug 'cespare/vim-toml'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'maxmellon/vim-jsx-pretty'
@@ -54,6 +55,7 @@ let g:airline#extensions#ale#enabled = 1
 let g:gruvbox_italic = 1
 let g:ale_fixers = {
  \   '*': ['trim_whitespace'],
+ \   'rust': ['rustfmt', 'trim_whitespace'],
  \   'javascript': ['prettier', 'eslint'],
  \   'javascript.jsx': ['prettier', 'eslint'],
  \   'typescript': ['prettier', 'eslint'],
