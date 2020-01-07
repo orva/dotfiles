@@ -78,15 +78,16 @@ input "2:14:ETPS/2_Elantech_TrackPoint" {
 
 ### Key bindings
     bindsym $mod+Print exec grim -g "$(slurp)"  $HOME/Pictures/"$(date +'%Y-%m-%d_%k-%M-%S')"-screenshot.png
-    bindsym $mod+F12 exec $HOME/bin/volume.sh up
-    bindsym $mod+F11 exec $HOME/bin/volume.sh down
-    bindsym $mod+F10 exec $HOME/bin/volume.sh mute-toggle
-    bindsym $mod+F9 exec $HOME/bin/microphone-toggle.sh
 
-    bindsym XF86AudioRaiseVolume exec $HOME/bin/volume.sh up
-    bindsym XF86AudioLowerVolume exec $HOME/bin/volume.sh down
-    bindsym XF86AudioMute exec $HOME/bin/volume.sh mute-toggle
-    bindsym XF86AudioMicMute exec $HOME/bin/microphone-toggle.sh
+    bindsym $mod+F12 exec $HOME/.dotfiles/bin/volume.sh up
+    bindsym $mod+F11 exec $HOME/.dotfiles/bin/volume.sh down
+    bindsym $mod+F10 exec $HOME/.dotfiles/bin/volume.sh mute-toggle
+    bindsym $mod+F9 exec $HOME/.dotfiles/bin/microphone-toggle.sh
+
+    bindsym XF86AudioRaiseVolume exec $HOME/.dotfiles/bin/volume.sh up
+    bindsym XF86AudioLowerVolume exec $HOME/.dotfiles/bin/volume.sh down
+    bindsym XF86AudioMute exec $HOME/.dotfiles/bin/volume.sh mute-toggle
+    bindsym XF86AudioMicMute exec $HOME/.dotfiles/bin/microphone-toggle.sh
 
     bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
