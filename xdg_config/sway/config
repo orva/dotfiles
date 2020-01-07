@@ -45,6 +45,12 @@ output "Sharp Corporation 0x1476 0x00000000" mode 3840x2160 scale 1.5
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
+exec swayidle -w \
+  timeout 300 'swaylock -f -c 6c6c6c' \
+  timeout 600 'swaymsg "output * dpms off"' \
+       resume 'swaymsg "output * dpms on"' \
+  before-sleep 'swaylock -f -c 6c6c6c'
+
 ### Input configuration
 #
 # Example configuration:
@@ -77,6 +83,7 @@ input "2:14:ETPS/2_Elantech_TrackPoint" {
 }
 
 ### Key bindings
+    bindsym $mod+b exec swaylock -f -c 6c6c6c
     bindsym $mod+Print exec grim -g "$(slurp)"  $HOME/Pictures/"$(date +'%Y-%m-%d_%k-%M-%S')"-screenshot.png
 
     bindsym $mod+F12 exec $HOME/.dotfiles/bin/volume.sh up
