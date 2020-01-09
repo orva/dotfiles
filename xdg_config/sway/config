@@ -51,7 +51,8 @@ exec swayidle -w \
        resume 'swaymsg "output * dpms on"' \
   before-sleep 'swaylock -f -c 6c6c6c'
 
-exec mako
+exec mako --default-timeout=5000
+exec udiskie
 
 ### Input configuration
 #
