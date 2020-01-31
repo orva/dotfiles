@@ -4,6 +4,11 @@
 # and following env-variables need to be defined
 #       BORG_REPO
 #       BORG_PASSPHRASE
+#
+# See borg getting started documentation about how to setup BORG_REPO
+# and the origins of this script:
+#
+# https://borgbackup.readthedocs.io/en/stable/quickstart.html
 
 # some helpers and error handling:
 info() { printf "\n%s %s\n\n" "$( date )" "$*" >&2; }
