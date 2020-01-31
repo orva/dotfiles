@@ -9,8 +9,10 @@ call plug#begin(plugdir)
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'dense-analysis/ale'
+Plug 'vimwiki/vimwiki'
 
 Plug 'cespare/vim-toml'
 Plug 'leafgarland/typescript-vim'
