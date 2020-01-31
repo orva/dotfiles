@@ -1,1 +1,3 @@
 xdg_config/nvim/plugged/
+xdg_config/systemd/user/*.wants
+ignored

@@ -1,0 +1,9 @@
+[Unit]
+Description="Backup using borg"
+
+[Service]
+ExecStart=%h/.dotfiles/bin/backup-home
+EnvironmentFile=%h/.dotfiles/ignored/backup-home.env
+
+[Install]
+WantedBy=default.target
