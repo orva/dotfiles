@@ -1,0 +1,7 @@
+[[outputs]]
+type = "battery"
+
+[[outputs]]
+type = "timestamp"
+format = "%a %Y-%m-%d - %H:%M"
+accuracy = "minutes"
