@@ -1,4 +1,5 @@
 export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/.cargo/bin
 export BROWSER=firefox
 
 if [[ -n "$DESKTOP_SESSION" && -z "$SSH_AUTH_SOCK" ]]; then
