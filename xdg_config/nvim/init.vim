@@ -54,6 +54,7 @@ set smartcase
 set incsearch
 set termguicolors
 
+let g:vimwiki_list = [{'path': '~/.dotdata/vimwiki/'}]
 let g:airline#extensions#ale#enabled = 1
 let g:gruvbox_italic = 1
 let g:ale_fixers = {
