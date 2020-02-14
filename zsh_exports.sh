@@ -1,5 +1,6 @@
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$PATH:$HOME/.dotdata
 export BROWSER=firefox
 export TIMEWARRIORDB=$HOME/.dotdata/timewarrior
 
