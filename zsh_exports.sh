@@ -6,7 +6,7 @@ export TIMEWARRIORDB=$HOME/.dotdata/timewarrior
 
 if [[ -n "$DESKTOP_SESSION" && -z "$SSH_AUTH_SOCK" ]]; then
   if hash gnome-keyring-daemon 2> /dev/null; then
-    eval $(gnome-keyring-daemon --start)
+    eval "$(gnome-keyring-daemon --start)"
     export SSH_AUTH_SOCK
   fi
 fi
