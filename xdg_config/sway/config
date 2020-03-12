@@ -48,10 +48,10 @@ output "Acer Technologies Acer CB280HK 0x0000F38C" mode 3840x2160 scale 1.5
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 exec swayidle -w \
-  timeout 600 'swaylock -f -c 6c6c6c' \
+  timeout 600 'swaylock -f -c 303030' \
   timeout 1600 'swaymsg "output * dpms off"' \
        resume 'swaymsg "output * dpms on"' \
-  before-sleep 'swaylock -f -c 6c6c6c'
+  before-sleep 'swaylock -f -c 303030'
 
 exec mako --default-timeout=5000
 exec udiskie
@@ -89,7 +89,7 @@ input "2:14:ETPS/2_Elantech_TrackPoint" {
 }
 
 ### Key bindings
-    bindsym $mod+b exec swaylock -f -c 6c6c6c
+    bindsym $mod+b exec swaylock -f -c 303030
     bindsym $mod+Print exec grim -g "$(slurp)"  $HOME/Pictures/"$(date +'%Y-%m-%d_%k-%M-%S')"-screenshot.png
 
     bindsym $mod+F12 exec $HOME/.dotfiles/bin/volume.sh up
