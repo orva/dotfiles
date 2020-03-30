@@ -32,6 +32,7 @@ include "~/.config/sway/$(cat /etc/hostname)"
 
 output "Sharp Corporation 0x1476 0x00000000" mode 3840x2160 scale 1.5
 output "Acer Technologies Acer CB280HK 0x0000F38C" mode 3840x2160 scale 1.5
+output "Acer Technologies Acer CB280HK T1HEE0014200" mode 3840x2160 scale 1.5
 
 ### Idle configuration
 #
