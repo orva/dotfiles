@@ -23,6 +23,7 @@ Plug 'mattn/emmet-vim'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
   Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
@@ -81,8 +82,6 @@ if has("nvim")
   \   'bash': ['npx', 'bash-language-server', 'start'],
   \   'javascript': ['npx', 'javascript-typescript-stdio'],
   \   'javascript.jsx': ['npx', 'javascript-typescript-stdio'],
-  \   'typescript': ['npx', 'javascript-typescript-stdio'],
-  \   'typescript.tsx': ['npx', 'javascript-typescript-stdio'],
   \}
 
   call deoplete#custom#option('sources', {
