@@ -77,7 +77,7 @@ if has("nvim")
   let g:LanguageClient_loggingLevel = "Error"
   let g:LanguageClient_windowLogMessageLevel = "Error"
   let g:LanguageClient_serverCommands = {
-  \   'rust': ['/usr/bin/rustup', 'run', 'stable', 'rls'],
+  \   'rust': ['rust-analyzer'],
   \   'sh': ['npx', 'bash-language-server', 'start'],
   \   'bash': ['npx', 'bash-language-server', 'start'],
   \   'javascript': ['npx', 'javascript-typescript-stdio'],
