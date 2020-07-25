@@ -6,11 +6,14 @@ endif
 
 call plug#begin(plugdir)
 
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
+Plug 'lifepillar/vim-solarized8'
+
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline'
 Plug 'dense-analysis/ale'
 Plug 'vimwiki/vimwiki'
 
@@ -45,19 +48,22 @@ call plug#end()
 " for vim, to be sure
 filetype plugin indent on
 
-colorscheme gruvbox
-set background=dark
 set signcolumn=yes
 set hidden
 set relativenumber
 set ignorecase
 set smartcase
 set incsearch
-set termguicolors
 
+set termguicolors
+set background=light
+colorscheme solarized8_high
+let g:airline_theme = 'solarized'
+" colorscheme gruvbox
+" let g:gruvbox_italic = 1
+"
 let g:vimwiki_list = [{'path': '~/.dotdata/vimwiki/'}]
 let g:airline#extensions#ale#enabled = 1
-let g:gruvbox_italic = 1
 let g:ale_fixers = {
  \   '*': ['trim_whitespace'],
  \   'rust': ['rustfmt', 'trim_whitespace'],
