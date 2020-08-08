@@ -49,12 +49,14 @@ set incsearch
 set termguicolors
 colorscheme solarized8_high
 set background=light
+
 let g:airline_theme = 'solarized'
-
 let g:vimwiki_list = [{'path': '~/.dotdata/vimwiki/'}]
-
-if has("nvim")
-endif
+let g:coc_global_extensions = [
+  \ 'coc-tsserver',
+  \ 'coc-rust-analyzer',
+  \ 'coc-json'
+  \ ]
 
 function ToggleGutter()
   if &relativenumber
@@ -102,6 +104,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>do <Plug>(coc-codeaction)
 
 " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
@@ -124,3 +127,7 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+
+autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
+autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
