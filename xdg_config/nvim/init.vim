@@ -19,6 +19,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'vimwiki/vimwiki'
 
 Plug 'cespare/vim-toml'
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'maxmellon/vim-jsx-pretty'
@@ -55,7 +56,10 @@ let g:vimwiki_list = [{'path': '~/.dotdata/vimwiki/'}]
 let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-rust-analyzer',
-  \ 'coc-json'
+  \ 'coc-json',
+  \ 'coc-svelte',
+  \ 'coc-prettier',
+  \ 'coc-eslint'
   \ ]
 
 function ToggleGutter()
