@@ -1,0 +1,11 @@
+{
+    "rust-analyzer.inlayHints.chainingHints": false,
+    "tsserver.npm": "/usr/bin/npm",
+    "coc.preferences.formatOnSaveFiletypes": ["typescript", "css", "markdown", "python"],
+    "diagnostic-languageserver.filetypes": {
+        "python": ["flake8", "pylint"]
+    },
+    "diagnostic-languageserver.formatFiletypes": {
+        "python": "black"
+    }
+}
