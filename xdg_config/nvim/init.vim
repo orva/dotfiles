@@ -59,7 +59,6 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-svelte',
   \ 'coc-prettier',
-  \ 'coc-eslint',
   \ 'coc-jedi',
   \ 'coc-diagnostic'
   \ ]

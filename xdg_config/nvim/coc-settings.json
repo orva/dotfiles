@@ -3,9 +3,11 @@
     "tsserver.npm": "/usr/bin/npm",
     "coc.preferences.formatOnSaveFiletypes": ["typescript", "css", "markdown", "python"],
     "diagnostic-languageserver.filetypes": {
-        "python": ["flake8", "pylint"]
+        "python": ["flake8", "pylint"],
+        "typescript": ["eslint"]
     },
     "diagnostic-languageserver.formatFiletypes": {
-        "python": "black"
+        "python": "black",
+        "typescript": "prettier"
     }
 }
