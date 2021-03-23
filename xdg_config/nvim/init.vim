@@ -24,6 +24,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'mattn/emmet-vim'
+Plug 'glench/vim-jinja2-syntax'
 
 if filereadable('/usr/share/vim/vimfiles/plugin/fzf.vim')
   Plug '/usr/share/vim/vimfiles/plugin/fzf.vim'
