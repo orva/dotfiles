@@ -8,14 +8,14 @@ HOST=$(cat /etc/hostname)
 CONF="$HOME/.config/swaybar-data/$HOST.toml"
 GENERATOR="$HOME/bin/swaybar-data"
 
-if [[ $HOST = "papaya" ]]; then
-    $GENERATOR --config="$CONF"
-elif [[ $HOST = "kisubox" ]]; then
+if [[ $HOST = "kisubox" ]]; then
     $GENERATOR --config="$CONF"
 else
+    BAT=$(ls /sys/class/power_supply | grep BAT | head -n 1)
+    CAPACITY_FILE="/sys/class/power_supply/${BAT}/capacity"
     while true; do
         DATE=$(date +'%a %Y-%m-%d - %k:%M')
-        BAT=$(cat /sys/class/power_supply/BAT0/capacity)
+        CAPACITY=$(cat $CAPACITY_FILE)
 
         CONNECTIONS=""
         NMCLI_OUT=$(nmcli --terse --fields 'state,type,connection' device)
@@ -44,7 +44,7 @@ else
           fi
         done <<< "$NMCLI_OUT"
 
-        echo "${CONNECTIONS} | BAT: ${BAT}% | ${DATE} "
+        echo "${CONNECTIONS} | BAT: ${CAPACITY}% | ${DATE} "
         sleep 5
     done
 fi
