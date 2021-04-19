@@ -26,6 +26,10 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'mattn/emmet-vim'
 Plug 'glench/vim-jinja2-syntax'
 
+Plug 'HiPhish/guile.vim'
+Plug 'Olical/conjure'
+Plug 'vim-scripts/paredit.vim'
+
 if filereadable('/usr/share/vim/vimfiles/plugin/fzf.vim')
   Plug '/usr/share/vim/vimfiles/plugin/fzf.vim'
   Plug 'junegunn/fzf.vim'
@@ -63,6 +67,9 @@ let g:coc_global_extensions = [
   \ 'coc-jedi',
   \ 'coc-diagnostic'
   \ ]
+let g:conjure#filetype#scheme = "conjure.client.guile.socket"
+let g:conjure#client#guile#socket#pipename = ".guile-repl.socket"
+
 
 function ToggleGutter()
   if &relativenumber
@@ -74,6 +81,7 @@ function ToggleGutter()
   endif
 endfunction
 
+let mapleader = "\\"
 nmap <silent> <C-b> :Buffers<CR>
 nmap <silent> <C-p> :GFiles<CR>
 nmap <silent> <leader>p :Files<CR>

@@ -2,3 +2,4 @@ xdg_config/nvim/.netrwhist
 xdg_config/nvim/plugged/
 xdg_config/systemd/user/*.wants
 ignored
+conjure-log-*.scm
