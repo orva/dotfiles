@@ -1,7 +1,10 @@
+bindkey -e
+
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/.dotdata
+export PATH=$PATH:$HOME/.dotfiles/bin
 export BROWSER=firefox
 export TIMEWARRIORDB=$HOME/.dotdata/timewarrior
 
