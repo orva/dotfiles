@@ -24,18 +24,18 @@
 
 (define (string->network-status s)
   (match s
-    ("disconnected"	'disconnected)
-    ("connected" 	'connected)
-    ("unavailable" 	'unavailable)
-    (_ 			'network-unknown-state)))
+	 ("disconnected"	'disconnected)
+	 ("connected" 	'connected)
+	 ("unavailable" 	'unavailable)
+	 (_ 			'network-unknown-state)))
 
 (define (string->network-type s)
   (match s
-    ("wifi" 	'wifi)
-    ("ethernet" 'ethernet)
-    ("loopback" 'loopback)
-    ("wifi-p2p" 'wifi-p2p)
-    (_ 		'network-unknown-type)))
+	 ("wifi" 	'wifi)
+	 ("ethernet" 'ethernet)
+	 ("loopback" 'loopback)
+	 ("wifi-p2p" 'wifi-p2p)
+	 (_ 		'network-unknown-type)))
 
 (define (string->network s)
   (match (string-split s #\:)
@@ -54,25 +54,31 @@
 		 (string-split connections #\newline)))))
 
 (define (networks)
-  (fold
-    (lambda (nw out)
-      (match nw
-	     (('ethernet 'disconnected _) (string-append "wired:disconnected " out))
-	     (('ethernet 'connected _) (string-append "wired:connected " out))
-	     (('wifi 'disconnected _) (string-append "wifi:disconnected " out))
-	     (('wifi 'connected name) (string-append "wifi:" name out))
-	     (_ out)))
-    ""
-    (nm-networks)))
+  (string-trim-both
+    (fold
+      (lambda (nw out)
+	(match nw
+	       (('ethernet 'disconnected _) (string-append "wired:disconnected " out))
+	       (('ethernet 'connected _) (string-append "wired:connected " out))
+	       (('wifi 'disconnected _) (string-append "wifi:disconnected " out))
+	       (('wifi 'connected name) (string-append "wifi:" name out))
+	       (_ out)))
+      ""
+      (nm-networks))))
 
 (define (output)
-  (format #t
-	  "~a | BAT: ~a% | ~a ~%"
-	  (networks)
-	  (battery-percentage (first (batteries)))
-	  (strftime "%a %Y-%m-%d - %k:%M" (localtime (current-time))))
-  (sleep 5)
-  (output))
+  (call-with-output-string
+    (lambda (port)
+      (format port
+	      "~a | BAT: ~a% | ~a ~%"
+	      (networks)
+	      (battery-percentage (first (batteries)))
+	      (strftime "%a %Y-%m-%d - %k:%M" (localtime (current-time)))))))
 
-(setvbuf (current-output-port) 'line)
-(output)
+(define (main)
+  (display (output))
+  (force-output)
+  (sleep 5)
+  (main))
+
+(main)
