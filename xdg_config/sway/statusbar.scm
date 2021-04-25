@@ -57,6 +57,8 @@
   (fold
     (lambda (nw out)
       (match nw
+	     (('ethernet 'disconnected _) (string-append "wired:disconnected " out))
+	     (('ethernet 'connected _) (string-append "wired:connected " out))
 	     (('wifi 'disconnected _) (string-append "wifi:disconnected " out))
 	     (('wifi 'connected name) (string-append "wifi:" name out))
 	     (_ out)))
