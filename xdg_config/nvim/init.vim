@@ -18,13 +18,8 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
 Plug 'vimwiki/vimwiki'
 
-Plug 'cespare/vim-toml'
-Plug 'evanleck/vim-svelte', {'branch': 'main'}
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'maxmellon/vim-jsx-pretty'
+Plug 'sheerun/vim-polyglot'
 Plug 'mattn/emmet-vim'
-Plug 'glench/vim-jinja2-syntax'
 
 Plug 'HiPhish/guile.vim'
 Plug 'Olical/conjure'
