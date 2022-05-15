@@ -48,8 +48,10 @@ set smartcase
 set incsearch
 
 set termguicolors
-colorscheme gruvbox
-set background=dark
+colorscheme solarized8
+set background=light
+" colorscheme gruvbox
+" set background=dark
 
 let g:airline_theme = 'gruvbox'
 let g:vimwiki_list = [{'path': '~/.dotdata/vimwiki/'}]

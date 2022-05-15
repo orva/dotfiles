@@ -9,5 +9,6 @@
     },
     "diagnostic-languageserver.formatFiletypes": {
         "python": "black"
-    }
+    },
+    "svelte.enable-ts-plugin": true
 }
