@@ -25,6 +25,11 @@ Plug 'HiPhish/guile.vim'
 Plug 'Olical/conjure'
 Plug 'vim-scripts/paredit.vim'
 
+if has('nvim')
+  Plug 'kyazdani42/nvim-web-devicons' " for file icons
+  Plug 'kyazdani42/nvim-tree.lua'
+endif
+
 if filereadable('/usr/share/vim/vimfiles/plugin/fzf.vim')
   Plug '/usr/share/vim/vimfiles/plugin/fzf.vim'
   Plug 'junegunn/fzf.vim'
@@ -139,6 +144,13 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
+nnoremap <C-n> :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>n :NvimTreeFindFile<CR>
 
 autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
 autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+
+lua << EOF
+require'nvim-tree'.setup { }
+EOF
