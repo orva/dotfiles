@@ -23,7 +23,7 @@ Plug 'mattn/emmet-vim'
 
 Plug 'HiPhish/guile.vim'
 Plug 'Olical/conjure'
-Plug 'vim-scripts/paredit.vim'
+Plug 'kovisoft/paredit'
 
 if has('nvim')
   Plug 'kyazdani42/nvim-web-devicons' " for file icons
@@ -53,12 +53,14 @@ set smartcase
 set incsearch
 
 set termguicolors
-colorscheme solarized8
-set background=light
-" colorscheme gruvbox
-" set background=dark
+" colorscheme solarized8
+" set background=light
+colorscheme gruvbox
+set background=dark
 
-let g:airline_theme = 'gruvbox'
+let g:airline_theme = 'solarized'
+" let g:airline_powerline_fonts = 1
+let g:airline_symbols_ascii = 1
 let g:vimwiki_list = [{'path': '~/.dotdata/vimwiki/'}]
 let g:coc_global_extensions = [
   \ 'coc-tsserver',
@@ -71,6 +73,7 @@ let g:coc_global_extensions = [
   \ ]
 let g:conjure#filetype#scheme = "conjure.client.guile.socket"
 let g:conjure#client#guile#socket#pipename = ".guile-repl.socket"
+let g:conjure#filetype#fennel = "conjure.client.fennel.stdio"
 
 
 function ToggleGutter()
@@ -83,6 +86,7 @@ function ToggleGutter()
   endif
 endfunction
 
+let maplocalleader = ","
 let mapleader = "\\"
 nmap <silent> <C-b> :Buffers<CR>
 nmap <silent> <C-p> :GFiles<CR>
