@@ -20,6 +20,7 @@ Plug 'vimwiki/vimwiki'
 
 Plug 'sheerun/vim-polyglot'
 Plug 'mattn/emmet-vim'
+Plug 'glench/vim-jinja2-syntax'
 
 Plug 'HiPhish/guile.vim'
 Plug 'Olical/conjure'
@@ -63,6 +64,7 @@ let g:airline_theme = 'solarized'
 let g:airline_symbols_ascii = 1
 let g:vimwiki_list = [{'path': '~/.dotdata/vimwiki/'}]
 let g:coc_global_extensions = [
+  \ 'coc-clangd',
   \ 'coc-tsserver',
   \ 'coc-rust-analyzer',
   \ 'coc-json',
