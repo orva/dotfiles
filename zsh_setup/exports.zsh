@@ -25,3 +25,15 @@ else
   fi
 fi
 
+# Forcefully set DEBUGINFOD_URLS, for some reason these are not loaded
+# to zsh even though everything looks like they should..
+if [[ -n $DEBUGINFOD_URLS ]]; then
+  export DEBUGINFOD_URLS="https://debuginfod.archlinux.org"
+fi
+
+
+# Add dash of colors and syntax highlighting to man pages
+if hash bat 2> /dev/null; then
+  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+fi
+
