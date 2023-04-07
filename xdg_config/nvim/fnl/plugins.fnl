@@ -8,7 +8,7 @@
         ts-update  (ts-install.update { :with_sync true })]
     (ts-update)))
 
-(defn- run-nvim-tree-config []
+(defn- nvim-tree-config []
   (let [tree (require "nvim-tree")]
     (tree.setup)))
 
@@ -16,6 +16,53 @@
   (let [telescope (require "telescope")]
     (telescope.setup)
     (telescope.load_extension "fzy_native")))
+
+(defn lsp-config []
+  (let [a (require :aniseed.core)
+        cmp (require :cmp)
+        luasnip (require :luasnip)
+        lspconfig (require :lspconfig)
+        cmp_nvim_lsp (require :cmp_nvim_lsp)
+        capabilities (cmp_nvim_lsp.default_capabilities)]
+    (lspconfig.clangd.setup {})
+    (lspconfig.pyright.setup {})
+    (lspconfig.tsserver.setup {})
+    (lspconfig.rust_analyzer.setup {})
+    (a.run!
+      (fn [lsp]
+        (let [setup (. lspconfig lsp :setup)]
+          (setup {:capabilities capabilities}))
+        )
+      ["clangd" "rust_analyzer" "pyright" "tsserver"])
+    (cmp.setup
+      {:snippet {:expand (fn [args]
+                           (luasnip.lsp_expand (. args :body)))}
+       :mapping (cmp.mapping.preset.insert
+                  {"<C-u>" (cmp.mapping.scroll_docs -4)
+                   "<C-d>" (cmp.mapping.scroll_docs -4)
+                   "<C-Space>" (cmp.mapping.complete)
+                   "<CR>" (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Replace
+                                                :select true})
+                   "<Tab>" (cmp.mapping
+                             (fn [fallback]
+                               (if
+                                 (cmp.visible)
+                                 (cmp.select_next_item)
+                                 (luasnip.expand_or_jumpable)
+                                 (luasnip.expand_or_jump)
+                                 (fallback)))
+                             [:i :s])
+                   "<S-Tab>" (cmp.mapping
+                               (fn [fallback]
+                                 (if
+                                   (cmp.visible)
+                                   (cmp.select_prev_item)
+                                   (luasnip.jumpable -1)
+                                   (luasnip.jump -1)
+                                   (fallback)))
+                               [:i :s])})
+       :sources [{:name :nvim_lsp}
+                 {:name :luasnip}]})))
 
 (packer.startup
   (fn [packer-use]
@@ -38,7 +85,7 @@
     (use "morhetz/gruvbox")
     (use "nvim-tree/nvim-tree.lua"
          {:requires ["nvim-tree/nvim-web-devicons"]
-          :config run-nvim-tree-config})
+          :config nvim-tree-config})
     (use "nvim-telescope/telescope.nvim"
          {:tag "0.1.1"
           :requires ["nvim-lua/plenary.nvim"
@@ -48,7 +95,8 @@
          {:requires ["hrsh7th/nvim-cmp"
                      "hrsh7th/cmp-nvim-lsp"
                      "saadparwaiz1/cmp_luasnip"
-                     "L3MON4D3/LuaSnip"]})
+                     "L3MON4D3/LuaSnip"]
+          :config lsp-config})
     (when (not= nil nvim.g.packer_sync_required)
       (packer.sync))))
 
