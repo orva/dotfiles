@@ -44,8 +44,11 @@
           :requires ["nvim-lua/plenary.nvim"
                      "nvim-telescope/telescope-fzy-native.nvim"]
           :config telescope-config})
-    (use "neovim/nvim-lspconfig")
-
+    (use "neovim/nvim-lspconfig"
+         {:requires ["hrsh7th/nvim-cmp"
+                     "hrsh7th/cmp-nvim-lsp"
+                     "saadparwaiz1/cmp_luasnip"
+                     "L3MON4D3/LuaSnip"]})
     (when (not= nil nvim.g.packer_sync_required)
       (packer.sync))))
 
