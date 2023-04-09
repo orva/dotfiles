@@ -9,7 +9,7 @@
 
 (defn- run-treesitter-update []
   (let [ts-install (require :nvim-treesitter.install)
-        ts-update  (ts-install.update { :with_sync true })]
+        ts-update  (ts-install.update {:with_sync true})]
     (ts-update)))
 
 (defn- lualine-config []
@@ -22,7 +22,8 @@
 
 (defn- telescope-config []
   (let [telescope (require :telescope)]
-    (telescope.setup)
+    (telescope.setup
+      {:defaults {:layout_strategy :vertical}})
     (telescope.load_extension :fzy_native)))
 
 (defn lsp-config []
