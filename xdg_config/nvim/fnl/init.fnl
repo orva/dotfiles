@@ -4,15 +4,17 @@
              tree-api nvim-tree.api
              nvim aniseed.nvim}})
 
-(set nvim.g.loaded_netrw 1)
-(set nvim.g.loaded_netrwPlugin 1)
-(set nvim.o.termguicolors true)
-(set nvim.o.background "dark")
+(set nvim.g.loaded_netrw true)
+(set nvim.g.loaded_netrwPlugin true)
 (set nvim.o.relativenumber true)
 (set nvim.o.timeoutlen 500)
 (set nvim.o.scrolloff 15)
 
-(vim.cmd.colorscheme "gruvbox")
+; Theme settings
+(set nvim.o.termguicolors true)
+(set nvim.o.background "dark")
+(set nvim.g.gruvbox_material_better_performance true)
+(vim.cmd.colorscheme "gruvbox-material")
 
 (set nvim.g.sexp_filetypes "clojure,scheme,lisp,timl,fennel,janet")
 

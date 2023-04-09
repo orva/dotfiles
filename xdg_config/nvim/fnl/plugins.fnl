@@ -8,18 +8,22 @@
 ; capture anything from their environment.
 
 (defn- run-treesitter-update []
-  (let [ts-install (require "nvim-treesitter.install")
+  (let [ts-install (require :nvim-treesitter.install)
         ts-update  (ts-install.update { :with_sync true })]
     (ts-update)))
 
+(defn- lualine-config []
+  (let [lualine (require :lualine)]
+    (lualine.setup {:options {:theme :gruvbox-material}})))
+
 (defn- nvim-tree-config []
-  (let [tree (require "nvim-tree")]
+  (let [tree (require :nvim-tree)]
     (tree.setup)))
 
 (defn- telescope-config []
-  (let [telescope (require "telescope")]
+  (let [telescope (require :telescope)]
     (telescope.setup)
-    (telescope.load_extension "fzy_native")))
+    (telescope.load_extension :fzy_native)))
 
 (defn lsp-config []
   (let [a (require :aniseed.core)
@@ -28,16 +32,13 @@
         lspconfig (require :lspconfig)
         cmp_nvim_lsp (require :cmp_nvim_lsp)
         capabilities (cmp_nvim_lsp.default_capabilities)]
-    (lspconfig.clangd.setup {})
-    (lspconfig.pyright.setup {})
-    (lspconfig.tsserver.setup {})
-    (lspconfig.rust_analyzer.setup {})
-    (a.run!
-      (fn [lsp]
-        (let [setup (. lspconfig lsp :setup)]
-          (setup {:capabilities capabilities}))
-        )
-      ["clangd" "rust_analyzer" "pyright" "tsserver"])
+
+    ; setup some lsp servers and set autocomplete capabilities
+    (lspconfig.clangd.setup {: capabilities})
+    (lspconfig.pyright.setup {: capabilities})
+    (lspconfig.tsserver.setup {: capabilities})
+    (lspconfig.rust_analyzer.setup {: capabilities})
+
     (cmp.setup
       {:snippet {:expand (fn [args] (luasnip.lsp_expand (. args :body)))}
        :mapping (cmp.mapping.preset.insert
@@ -77,6 +78,10 @@
         (packer-use (a.assoc opts 1 name))))
 
     (use "wbthomason/packer.nvim")
+    (use "sainnhe/gruvbox-material")
+    (use "nvim-lualine/lualine.nvim"
+         {:requires ["nvim-tree/nvim-web-devicons"]
+          :config lualine-config})
     (use "Olical/aniseed")
     (use "Olical/conjure")
     (use "guns/vim-sexp"
@@ -85,7 +90,6 @@
          {:run run-treesitter-update})
     (use "tpope/vim-repeat")
     (use "tpope/vim-surround")
-    (use "morhetz/gruvbox")
     (use "nvim-tree/nvim-tree.lua"
          {:requires ["nvim-tree/nvim-web-devicons"]
           :config nvim-tree-config})
