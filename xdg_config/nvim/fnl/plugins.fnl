@@ -3,6 +3,10 @@
              nvim   aniseed.nvim
              packer packer}})
 
+; NOTE: All functions given to packer hooks are serialized for lazy loading
+; purposes. This means that they need to be standalone, so they cannot
+; capture anything from their environment.
+
 (defn- run-treesitter-update []
   (let [ts-install (require "nvim-treesitter.install")
         ts-update  (ts-install.update { :with_sync true })]
@@ -35,8 +39,7 @@
         )
       ["clangd" "rust_analyzer" "pyright" "tsserver"])
     (cmp.setup
-      {:snippet {:expand (fn [args]
-                           (luasnip.lsp_expand (. args :body)))}
+      {:snippet {:expand (fn [args] (luasnip.lsp_expand (. args :body)))}
        :mapping (cmp.mapping.preset.insert
                   {"<C-u>" (cmp.mapping.scroll_docs -4)
                    "<C-d>" (cmp.mapping.scroll_docs -4)
@@ -66,11 +69,11 @@
 
 (packer.startup
   (fn [packer-use]
-    ; Fennel doesn't approve "mixed mode" table literals with positional and
-    ; keyword values. Sadly this is what packer expects as parameters, so
+    ; Fennel doesn't approve "mixed mode" table literals with both positional
+    ; and keyword values. Sadly this is what packer expects as parameters, so
     ; we have this little helper.
     (fn use [name maybe-opts]
-      (let [opts (if (= nil maybe-opts) {} maybe-opts)]
+      (let [opts (if (not= nil maybe-opts) maybe-opts {})]
         (packer-use (a.assoc opts 1 name))))
 
     (use "wbthomason/packer.nvim")

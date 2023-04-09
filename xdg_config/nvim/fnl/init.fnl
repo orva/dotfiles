@@ -6,12 +6,13 @@
 
 (set nvim.g.loaded_netrw 1)
 (set nvim.g.loaded_netrwPlugin 1)
-
 (set nvim.o.termguicolors true)
-(vim.cmd.colorscheme "gruvbox")
 (set nvim.o.background "dark")
 (set nvim.o.relativenumber true)
 (set nvim.o.timeoutlen 500)
+(set nvim.o.scrolloff 15)
+
+(vim.cmd.colorscheme "gruvbox")
 
 (set nvim.g.sexp_filetypes "clojure,scheme,lisp,timl,fennel,janet")
 
