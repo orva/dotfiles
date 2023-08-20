@@ -34,6 +34,7 @@ fi
 
 # Add dash of colors and syntax highlighting to man pages
 if hash bat 2> /dev/null; then
+  export MANROFFOPT="-c"
   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 fi
 
