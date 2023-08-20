@@ -15,7 +15,8 @@
 (defn- treesitter-config []
   (let [ts-config (require :nvim-treesitter.configs)]
     (ts-config.setup
-      {:ensure_installed ["c" "cpp" "css" "lua" "svelte" "javascript" "typescript" "rust"]
+      {:ensure_installed ["c" "cpp" "css" "lua" "svelte" "javascript" "typescript"
+                          "rust" "fennel"]
        :highlight {:enable true}})))
 
 (defn- lualine-config []
