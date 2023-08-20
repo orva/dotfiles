@@ -12,6 +12,12 @@
         ts-update  (ts-install.update {:with_sync true})]
     (ts-update)))
 
+(defn- treesitter-config []
+  (let [ts-config (require :nvim-treesitter.configs)]
+    (ts-config.setup
+      {:ensure_installed ["c" "cpp" "css" "lua" "svelte" "javascript" "typescript" "rust"]
+       :highlight {:enable true}})))
+
 (defn- lualine-config []
   (let [lualine (require :lualine)]
     (lualine.setup {:options {:theme :gruvbox-material}})))
@@ -37,8 +43,13 @@
     ; setup some lsp servers and set autocomplete capabilities
     (lspconfig.clangd.setup {: capabilities})
     (lspconfig.pyright.setup {: capabilities})
-    (lspconfig.tsserver.setup {: capabilities})
     (lspconfig.rust_analyzer.setup {: capabilities})
+
+    ; These require global language servers:
+    ; npm install -g typescript typescript-language-server vscode-langservers-extracted svelte-language-server
+    (lspconfig.tsserver.setup {: capabilities})
+    (lspconfig.eslint.setup {: capabilities})
+    (lspconfig.svelte.setup {: capabilities})
 
     (cmp.setup
       {:snippet {:expand (fn [args] (luasnip.lsp_expand (. args :body)))}
@@ -88,7 +99,8 @@
     (use "guns/vim-sexp"
          {:requires ["tpope/vim-sexp-mappings-for-regular-people"]})
     (use "nvim-treesitter/nvim-treesitter"
-         {:run run-treesitter-update})
+         {:run run-treesitter-update
+          :config treesitter-config})
     (use "tpope/vim-repeat")
     (use "tpope/vim-surround")
     (use "nvim-tree/nvim-tree.lua"
