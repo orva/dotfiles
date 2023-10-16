@@ -16,7 +16,7 @@
   (let [ts-config (require :nvim-treesitter.configs)]
     (ts-config.setup
       {:ensure_installed ["c" "cpp" "css" "lua" "svelte" "javascript" "typescript"
-                          "rust" "fennel"]
+                          "rust" "fennel" "clojure"]
        :highlight {:enable true}})))
 
 (defn- lualine-config []
@@ -108,7 +108,7 @@
          {:requires ["nvim-tree/nvim-web-devicons"]
           :config nvim-tree-config})
     (use "nvim-telescope/telescope.nvim"
-         {:tag "0.1.1"
+         {:tag "0.1.3"
           :requires ["nvim-lua/plenary.nvim"
                      "nvim-telescope/telescope-fzy-native.nvim"]
           :config telescope-config})
