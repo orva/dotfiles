@@ -10,7 +10,7 @@
                                     :dark :frappe}
 		       :integrations {:neotree true}})
     (set vim.o.background :dark)
-    (vim.cmd.colorscheme "catppuccin")))
+    (vim.cmd.colorscheme :catppuccin)))
 
 (dep-spec "catppuccin/nvim"
 	  {:name catppuccin

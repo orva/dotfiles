@@ -1,5 +1,6 @@
 xdg_config/nvim/.netrwhist
 xdg_config/nvim/plugged/
 xdg_config/systemd/user/*.wants
+xdg_config/lazygit/state.yml
 ignored
 conjure-log-*.scm
