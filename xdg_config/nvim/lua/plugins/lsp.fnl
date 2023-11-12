@@ -16,16 +16,24 @@
 
 
 (fn config []
-  (let [cmp (require :cmp)
-            luasnip (require :luasnip)
-            lspconfig (require :lspconfig)
-            cmp_nvim_lsp (require :cmp_nvim_lsp)
-            capabilities (cmp_nvim_lsp.default_capabilities)]
+  (let [mason (require :mason)
+        mason-lspconfig (require :mason-lspconfig)
+        lspconfig (require :lspconfig)
+        cmp (require :cmp)
+        luasnip (require :luasnip)
+        cmp_nvim_lsp (require :cmp_nvim_lsp)
+        capabilities (cmp_nvim_lsp.default_capabilities)]
+
+    (mason.setup)
+    (mason-lspconfig.setup {:ensure_installed ["clangd" "pyright" "rust_analyzer"
+                                               "clojure_lsp" "eslint" "tsserver"
+                                               "svelte"]})
 
     ; setup some lsp servers and set autocomplete capabilities
     (lspconfig.clangd.setup {: capabilities})
     (lspconfig.pyright.setup {: capabilities})
     (lspconfig.rust_analyzer.setup {: capabilities})
+    (lspconfig.clojure_lsp.setup {: capabilities})
 
     ; These require global language servers:
     ; npm install -g typescript typescript-language-server vscode-langservers-extracted svelte-language-server
@@ -66,11 +74,15 @@
       {:group (vim.api.nvim_create_augroup :UserLspConfig {})
        :callback lsp-autocmd})))
 
-(dep-spec "neovim/nvim-lspconfig"
-          {:dependencies ["telescope" ; telescope setup is in another plugin 
+(dep-spec "williamboman/mason.nvim"
+          {:name :lsp
+           :dependencies ["williamboman/mason-lspconfig.nvim" 
+                          "neovim/nvim-lspconfig"
                           "hrsh7th/nvim-cmp"
                           "hrsh7th/cmp-nvim-lsp"
                           "saadparwaiz1/cmp_luasnip"
-                          "L3MON4D3/LuaSnip"]
+                          "L3MON4D3/LuaSnip"
+                          ; telescope setup is in another plugin 
+                          "telescope"]
            : config})
 
