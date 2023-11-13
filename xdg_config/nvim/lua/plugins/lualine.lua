@@ -5,4 +5,4 @@ local function config()
   local lualine = require("lualine")
   return lualine.setup({options = {theme = "catppuccin"}})
 end
-return dep_spec("nvim-lualine/lualine.nvim", {requires = {"nvim-tree/nvim-web-devicons"}, config = config})
+return dep_spec("nvim-lualine/lualine.nvim", {dependencies = {"nvim-tree/nvim-web-devicons"}, config = config})

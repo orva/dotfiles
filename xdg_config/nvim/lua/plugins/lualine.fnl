@@ -5,5 +5,5 @@
     (lualine.setup {:options {:theme :catppuccin}})))
 
 (dep-spec "nvim-lualine/lualine.nvim"
-     {:requires ["nvim-tree/nvim-web-devicons"]
+     {:dependencies ["nvim-tree/nvim-web-devicons"]
       : config})
