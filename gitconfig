@@ -1,0 +1,18 @@
+[user]
+	name = Iivari Äikäs
+	email = iivari.aikas@gmail.com
+
+[commit]
+        verbose = true
+[diff]
+	algorithm = histogram
+[rebase]
+	autoSquash = true
+[alias]
+        ch = checkout
+        st = status
+        ci = commit
+        ba = branch --all
+        fap = fetch --all --prune
+[include]
+        path = ~/.gitconfig.override
