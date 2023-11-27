@@ -1,18 +1,25 @@
 [user]
 	name = Iivari Äikäs
 	email = iivari.aikas@gmail.com
-
+[init]
+        defaultBranch = main
 [commit]
         verbose = true
 [diff]
 	algorithm = histogram
 [rebase]
 	autoSquash = true
+	autoStash = true
+[pull]
+        rebase = true
 [alias]
-        ch = checkout
+        d = diff
+        dc = diff --cached
         st = status
+        ch = checkout
+        chb = checkout -b
         ci = commit
-        ba = branch --all
         fap = fetch --all --prune
+        ba = branch --all
 [include]
         path = ~/.gitconfig.override
