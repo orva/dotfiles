@@ -5,7 +5,7 @@
     (ls.setup {:sources [(. ls :builtins :diagnostics :eslint)
                          (. ls :builtins :diagnostics :clj_kondo)
                          (. ls :builtins :formatting :prettier)
-                         (. ls :builtins :formatting :cljstyle)
+                         (. ls :builtins :formatting :zprint)
                          (. ls :builtins :formatting :rustfmt)]})))
 
 ; null-ls renamed to none-ls
