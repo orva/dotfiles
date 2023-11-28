@@ -5,3 +5,8 @@ xdg_config/lazygit/state.yml
 xdg_config/kitty/overrides.conf
 ignored
 conjure-log-*.scm
+.lsp/.cache
+xdg_config/clojure/.clj-kondo/.cache/v1
+.clj-kondo/.cache/v1
+xdg_config/clojure/.cpcache
+xdg_config/clojure/.lsp/.cache
