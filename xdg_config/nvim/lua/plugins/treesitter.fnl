@@ -3,7 +3,8 @@
 (fn config []
   (let [{: setup} (require :nvim-treesitter.configs)]
     (setup {:ensure_installed ["c" "cpp" "css" "lua" "svelte" "javascript"
-			       "typescript" "rust" "fennel" "clojure"]
+			       "typescript" "rust" "fennel" "clojure"
+                               "markdown" "markdown_inline"]
 	    :highlight {:enable true}})))
 
 (fn build []

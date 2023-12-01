@@ -4,7 +4,7 @@ local dep_spec = _local_1_["dep-spec"]
 local function config()
   local _let_2_ = require("nvim-treesitter.configs")
   local setup = _let_2_["setup"]
-  return setup({ensure_installed = {"c", "cpp", "css", "lua", "svelte", "javascript", "typescript", "rust", "fennel", "clojure"}, highlight = {enable = true}})
+  return setup({ensure_installed = {"c", "cpp", "css", "lua", "svelte", "javascript", "typescript", "rust", "fennel", "clojure", "markdown", "markdown_inline"}, highlight = {enable = true}})
 end
 local function build()
   local _let_3_ = require("nvim-treesitter.install")
