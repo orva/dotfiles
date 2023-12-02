@@ -1,2 +1,2 @@
-{:search-config true
+{:search-config? true
  :style [:community]}
