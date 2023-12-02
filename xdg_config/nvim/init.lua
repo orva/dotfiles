@@ -11,12 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- We need to set some things before plugins are loaded for them to register these
--- options
-vim.g.mapleader = "\\"
-vim.g.maplocalleader = "\\"
-
 -- Require all plugins (including neovim fennel setup with nfnl) and run our own
 -- startup code from fennel land
-require("lazy").setup("plugins")
 require("startup")
+require("lazy").setup("plugins")

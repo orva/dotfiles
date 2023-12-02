@@ -1,3 +1,6 @@
+(set vim.g.mapleader "\\")
+(set vim.g.maplocalleader "\\")
+
 (set vim.o.relativenumber true)
 (set vim.o.timeoutlen 500)
 (set vim.o.expandtab true)
