@@ -81,8 +81,8 @@
                           "hrsh7th/nvim-cmp"
                           "hrsh7th/cmp-nvim-lsp"
                           "saadparwaiz1/cmp_luasnip"
-                          "L3MON4D3/LuaSnip"
-                          ; telescope setup is in another plugin 
+                          ; these setups are in different plugin
+                          "snippets"
                           "telescope"]
            : config})
 
