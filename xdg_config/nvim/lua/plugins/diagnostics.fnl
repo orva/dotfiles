@@ -1,4 +1,4 @@
-(local {: dep-spec } (require :util))
+(local {: dep-spec} (require :util))
 
 (fn config []
   (let [ls (require :null-ls)
@@ -9,17 +9,15 @@
                          (. ls :builtins :formatting :zprint)
                          (. ls :builtins :formatting :rustfmt)
                          (. ls :builtins :formatting :fnlfmt)]})
-
-        (vim.keymap.set :n "<leader>xx" trouble.toggle)
-        (vim.keymap.set :n "<leader>xw" #(trouble.toggle :workspace_diagnostics))
-        (vim.keymap.set :n "<leader>xd" #(trouble.toggle :document_diagnostics))
-        (vim.keymap.set :n "<leader>xq" #(trouble.toggle :quickfix))
-        (vim.keymap.set :n "<leader>xl" #(trouble.toggle :locklist))
-        (vim.keymap.set :n "<leader>xr" #(trouble.toggle :lsp_references))))
+    (vim.keymap.set :n :<leader>xx trouble.toggle)
+    (vim.keymap.set :n :<leader>xw #(trouble.toggle :workspace_diagnostics))
+    (vim.keymap.set :n :<leader>xd #(trouble.toggle :document_diagnostics))
+    (vim.keymap.set :n :<leader>xq #(trouble.toggle :quickfix))
+    (vim.keymap.set :n :<leader>xl #(trouble.toggle :locklist))
+    (vim.keymap.set :n :<leader>xr #(trouble.toggle :lsp_references))))
 
 ; null-ls renamed to none-ls
-(dep-spec "nvimtools/none-ls.nvim"
-          {:dependencies ["nvim-lua/plenary.nvim"
-                          "folke/trouble.nvim"
-                          "nvim-tree/nvim-web-devicons"]
-           : config})
+(dep-spec :nvimtools/none-ls.nvim {:dependencies [:nvim-lua/plenary.nvim
+                                                  :folke/trouble.nvim
+                                                  :nvim-tree/nvim-web-devicons]
+                                   : config})

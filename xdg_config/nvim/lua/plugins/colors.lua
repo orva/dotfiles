@@ -8,7 +8,7 @@ end
 local function config()
   local catppuccin = require("catppuccin")
   catppuccin.setup({background = {light = "latte", dark = "frappe"}, integrations = {neotree = true}})
-  vim.o.background = "dark"
+  vim.o.background = "light"
   return vim.cmd.colorscheme("catppuccin")
 end
 return dep_spec("catppuccin/nvim", {name = catppuccin, priority = 1000, init = init, config = config})
