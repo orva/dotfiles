@@ -10,4 +10,4 @@
     (set vim.o.background :light)
     (vim.cmd.colorscheme :catppuccin)))
 
-(dep-spec :catppuccin/nvim {:name catppuccin :priority 1000 : init : config})
+(dep-spec :catppuccin/nvim {:name :colors :priority 1000 : init : config})

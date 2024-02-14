@@ -11,4 +11,4 @@ local function config()
   vim.o.background = "light"
   return vim.cmd.colorscheme("catppuccin")
 end
-return dep_spec("catppuccin/nvim", {name = catppuccin, priority = 1000, init = init, config = config})
+return dep_spec("catppuccin/nvim", {name = "colors", priority = 1000, init = init, config = config})
