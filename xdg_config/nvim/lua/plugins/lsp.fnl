@@ -1,5 +1,14 @@
 (local {: dep-spec} (require :util))
 
+(fn vcs-root-dir [lsp-utils]
+  (lsp-utils.root_pattern :.jj :.git))
+
+(fn marksman-root-dir [lsp-utils]
+  (let [vcs-match (vcs-root-dir lsp-utils)
+        config-match (lsp-utils.root_pattern :.marksman.toml)]
+    (fn [fname]
+      (or (config-match fname) (vcs-match fname)))))
+
 (fn lsp-autocmd [ev]
   (let [telescope (require :telescope.builtin)
         opts {:buffer ev.buf}]
@@ -18,6 +27,7 @@
   (let [mason (require :mason)
         mason-lspconfig (require :mason-lspconfig)
         lspconfig (require :lspconfig)
+        lsp-utils (require :lspconfig.util)
         cmp (require :cmp)
         luasnip (require :luasnip)
         cmp-nvim-lsp (require :cmp_nvim_lsp)
@@ -30,7 +40,8 @@
                                                :eslint
                                                :tsserver
                                                :svelte
-                                               :fennel_language_server]})
+                                               :fennel_language_server
+                                               :marksman]})
     (lspconfig.clangd.setup {: capabilities})
     (lspconfig.pyright.setup {: capabilities})
     (lspconfig.rust_analyzer.setup {: capabilities})
@@ -39,7 +50,13 @@
     (lspconfig.eslint.setup {: capabilities})
     (lspconfig.svelte.setup {: capabilities})
     (lspconfig.fennel_language_server.setup {: capabilities
+                                             :single_file_support false
+                                             :root_dir (vcs-root-dir lsp-utils)
                                              :settings {:fennel {:diagnostics {:globals [:vim]}}}})
+    (lspconfig.marksman.setup {: capabilities
+                               :single_file_support false
+                               :filetypes [:markdown :md :mdx]
+                               :root_dir (marksman-root-dir lsp-utils)})
     (cmp.setup {:snippet {:expand (fn [args]
                                     (luasnip.lsp_expand (. args :body)))}
                 :mapping (cmp.mapping.preset.insert {:<C-u> (cmp.mapping.scroll_docs -4)

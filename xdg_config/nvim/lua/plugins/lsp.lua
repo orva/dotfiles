@@ -1,6 +1,17 @@
 -- [nfnl] Compiled from lua/plugins/lsp.fnl by https://github.com/Olical/nfnl, do not edit.
 local _local_1_ = require("util")
 local dep_spec = _local_1_["dep-spec"]
+local function vcs_root_dir(lsp_utils)
+  return lsp_utils.root_pattern(".jj", ".git")
+end
+local function marksman_root_dir(lsp_utils)
+  local vcs_match = vcs_root_dir(lsp_utils)
+  local config_match = lsp_utils.root_pattern(".marksman.toml")
+  local function _2_(fname)
+    return (config_match(fname) or vcs_match(fname))
+  end
+  return _2_
+end
 local function lsp_autocmd(ev)
   local telescope = require("telescope.builtin")
   local opts = {buffer = ev.buf}
@@ -13,21 +24,22 @@ local function lsp_autocmd(ev)
   vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
   vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
   vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
-  local function _2_()
+  local function _3_()
     return vim.lsp.buf.format({async = true})
   end
-  return vim.keymap.set("n", "<space>f", _2_, opts)
+  return vim.keymap.set("n", "<space>f", _3_, opts)
 end
 local function config()
   local mason = require("mason")
   local mason_lspconfig = require("mason-lspconfig")
   local lspconfig = require("lspconfig")
+  local lsp_utils = require("lspconfig.util")
   local cmp = require("cmp")
   local luasnip = require("luasnip")
   local cmp_nvim_lsp = require("cmp_nvim_lsp")
   local capabilities = cmp_nvim_lsp.default_capabilities()
   mason.setup()
-  mason_lspconfig.setup({ensure_installed = {"clangd", "pyright", "rust_analyzer", "clojure_lsp", "eslint", "tsserver", "svelte", "fennel_language_server"}})
+  mason_lspconfig.setup({ensure_installed = {"clangd", "pyright", "rust_analyzer", "clojure_lsp", "eslint", "tsserver", "svelte", "fennel_language_server", "marksman"}})
   lspconfig.clangd.setup({capabilities = capabilities})
   lspconfig.pyright.setup({capabilities = capabilities})
   lspconfig.rust_analyzer.setup({capabilities = capabilities})
@@ -35,11 +47,12 @@ local function config()
   lspconfig.tsserver.setup({capabilities = capabilities})
   lspconfig.eslint.setup({capabilities = capabilities})
   lspconfig.svelte.setup({capabilities = capabilities})
-  lspconfig.fennel_language_server.setup({capabilities = capabilities, settings = {fennel = {diagnostics = {globals = {"vim"}}}}})
-  local function _3_(args)
+  lspconfig.fennel_language_server.setup({capabilities = capabilities, root_dir = vcs_root_dir(lsp_utils), settings = {fennel = {diagnostics = {globals = {"vim"}}}}, single_file_support = false})
+  lspconfig.marksman.setup({capabilities = capabilities, filetypes = {"markdown", "md", "mdx"}, root_dir = marksman_root_dir(lsp_utils), single_file_support = false})
+  local function _4_(args)
     return luasnip.lsp_expand(args.body)
   end
-  local function _4_(fallback)
+  local function _5_(fallback)
     if cmp.visible() then
       return cmp.select_next_item()
     elseif luasnip.expand_or_jumpable() then
@@ -48,7 +61,7 @@ local function config()
       return fallback()
     end
   end
-  local function _6_(fallback)
+  local function _7_(fallback)
     if cmp.visible() then
       return cmp.select_prev_item()
     elseif luasnip.jumpable(-1) then
@@ -57,7 +70,7 @@ local function config()
       return fallback()
     end
   end
-  cmp.setup({snippet = {expand = _3_}, mapping = cmp.mapping.preset.insert({["<C-u>"] = cmp.mapping.scroll_docs(-4), ["<C-d>"] = cmp.mapping.scroll_docs(-4), ["<C-Space>"] = cmp.mapping.complete(), ["<CR>"] = cmp.mapping.confirm({behavior = cmp.ConfirmBehavior.Replace, select = true}), ["<Tab>"] = cmp.mapping(_4_, {"i", "s"}), ["<S-Tab>"] = cmp.mapping(_6_, {"i", "s"})}), sources = {{name = "nvim_lsp"}, {name = "luasnip"}}})
+  cmp.setup({snippet = {expand = _4_}, mapping = cmp.mapping.preset.insert({["<C-u>"] = cmp.mapping.scroll_docs(-4), ["<C-d>"] = cmp.mapping.scroll_docs(-4), ["<C-Space>"] = cmp.mapping.complete(), ["<CR>"] = cmp.mapping.confirm({behavior = cmp.ConfirmBehavior.Replace, select = true}), ["<Tab>"] = cmp.mapping(_5_, {"i", "s"}), ["<S-Tab>"] = cmp.mapping(_7_, {"i", "s"})}), sources = {{name = "nvim_lsp"}, {name = "luasnip"}}})
   return vim.api.nvim_create_autocmd("LspAttach", {group = vim.api.nvim_create_augroup("UserLspConfig", {}), callback = lsp_autocmd})
 end
 return dep_spec("williamboman/mason.nvim", {name = "lsp", dependencies = {"williamboman/mason-lspconfig.nvim", "neovim/nvim-lspconfig", "hrsh7th/nvim-cmp", "hrsh7th/cmp-nvim-lsp", "saadparwaiz1/cmp_luasnip", "snippets", "telescope"}, config = config})
