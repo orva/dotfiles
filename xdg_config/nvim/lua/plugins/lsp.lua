@@ -35,6 +35,7 @@ local function config()
   lspconfig.tsserver.setup({capabilities = capabilities})
   lspconfig.eslint.setup({capabilities = capabilities})
   lspconfig.svelte.setup({capabilities = capabilities})
+  lspconfig.fennel_language_server.setup({capabilities = capabilities, settings = {fennel = {diagnostics = {globals = {"vim"}}}}})
   local function _3_(args)
     return luasnip.lsp_expand(args.body)
   end

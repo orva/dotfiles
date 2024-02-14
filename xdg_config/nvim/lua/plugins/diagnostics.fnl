@@ -7,7 +7,8 @@
                          (. ls :builtins :diagnostics :clj_kondo)
                          (. ls :builtins :formatting :biome)
                          (. ls :builtins :formatting :zprint)
-                         (. ls :builtins :formatting :rustfmt)]})
+                         (. ls :builtins :formatting :rustfmt)
+                         (. ls :builtins :formatting :fnlfmt)]})
 
         (vim.keymap.set :n "<leader>xx" trouble.toggle)
         (vim.keymap.set :n "<leader>xw" #(trouble.toggle :workspace_diagnostics))
