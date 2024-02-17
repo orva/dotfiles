@@ -1,12 +1,14 @@
 -- [nfnl] Compiled from lua/plugins/lsp.fnl by https://github.com/Olical/nfnl, do not edit.
 local _local_1_ = require("util")
 local dep_spec = _local_1_["dep-spec"]
-local function vcs_root_dir(lsp_utils)
+local function vcs_root_dir()
+  local lsp_utils = require("lspconfig.util")
   return lsp_utils.root_pattern(".jj", ".git")
 end
-local function marksman_root_dir(lsp_utils)
-  local vcs_match = vcs_root_dir(lsp_utils)
+local function marksman_root_dir()
+  local lsp_utils = require("lspconfig.util")
   local config_match = lsp_utils.root_pattern(".marksman.toml")
+  local vcs_match = vcs_root_dir()
   local function _2_(fname)
     return (config_match(fname) or vcs_match(fname))
   end
@@ -47,7 +49,7 @@ local function config()
   lspconfig.tsserver.setup({capabilities = capabilities})
   lspconfig.eslint.setup({capabilities = capabilities})
   lspconfig.svelte.setup({capabilities = capabilities})
-  lspconfig.fennel_language_server.setup({capabilities = capabilities, root_dir = vcs_root_dir(lsp_utils), settings = {fennel = {diagnostics = {globals = {"vim"}}}}, single_file_support = false})
+  lspconfig.fennel_language_server.setup({capabilities = capabilities, root_dir = vcs_root_dir(), settings = {fennel = {diagnostics = {globals = {"vim"}}}}, single_file_support = false})
   lspconfig.marksman.setup({capabilities = capabilities, filetypes = {"markdown", "md", "mdx"}, root_dir = marksman_root_dir(lsp_utils), single_file_support = false})
   local function _4_(args)
     return luasnip.lsp_expand(args.body)

@@ -1,11 +1,13 @@
 (local {: dep-spec} (require :util))
 
-(fn vcs-root-dir [lsp-utils]
-  (lsp-utils.root_pattern :.jj :.git))
+(fn vcs-root-dir []
+  (let [lsp-utils (require :lspconfig.util)]
+    (lsp-utils.root_pattern :.jj :.git)))
 
-(fn marksman-root-dir [lsp-utils]
-  (let [vcs-match (vcs-root-dir lsp-utils)
-        config-match (lsp-utils.root_pattern :.marksman.toml)]
+(fn marksman-root-dir []
+  (let [lsp-utils (require :lspconfig.util)
+        config-match (lsp-utils.root_pattern :.marksman.toml)
+        vcs-match (vcs-root-dir)]
     (fn [fname]
       (or (config-match fname) (vcs-match fname)))))
 
@@ -51,7 +53,7 @@
     (lspconfig.svelte.setup {: capabilities})
     (lspconfig.fennel_language_server.setup {: capabilities
                                              :single_file_support false
-                                             :root_dir (vcs-root-dir lsp-utils)
+                                             :root_dir (vcs-root-dir)
                                              :settings {:fennel {:diagnostics {:globals [:vim]}}}})
     (lspconfig.marksman.setup {: capabilities
                                :single_file_support false
