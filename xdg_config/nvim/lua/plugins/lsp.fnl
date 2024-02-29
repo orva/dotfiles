@@ -39,9 +39,7 @@
                                                :pyright
                                                :rust_analyzer
                                                :clojure_lsp
-                                               :eslint
                                                :tsserver
-                                               :svelte
                                                :fennel_language_server
                                                :marksman]})
     (lspconfig.clangd.setup {: capabilities})
@@ -49,8 +47,6 @@
     (lspconfig.rust_analyzer.setup {: capabilities})
     (lspconfig.clojure_lsp.setup {: capabilities})
     (lspconfig.tsserver.setup {: capabilities})
-    (lspconfig.eslint.setup {: capabilities})
-    (lspconfig.svelte.setup {: capabilities})
     (lspconfig.fennel_language_server.setup {: capabilities
                                              :single_file_support false
                                              :root_dir (vcs-root-dir)

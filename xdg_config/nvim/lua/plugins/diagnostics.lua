@@ -4,7 +4,7 @@ local dep_spec = _local_1_["dep-spec"]
 local function config()
   local ls = require("null-ls")
   local trouble = require("trouble")
-  ls.setup({sources = {ls.builtins.diagnostics.eslint, ls.builtins.diagnostics.clj_kondo, ls.builtins.formatting.biome, ls.builtins.formatting.zprint, ls.builtins.formatting.rustfmt, ls.builtins.formatting.fnlfmt}})
+  ls.setup({sources = {ls.builtins.diagnostics.clj_kondo, ls.builtins.formatting.biome, ls.builtins.formatting.zprint, ls.builtins.formatting.fnlfmt}})
   vim.keymap.set("n", "<leader>xx", trouble.toggle)
   local function _2_()
     return trouble.toggle("workspace_diagnostics")
