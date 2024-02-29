@@ -2,19 +2,17 @@
 *.normal=true
 
 default.fg=#4c4f69
+border.bg=#e6e9ef
 
 error.fg=#d20f39
-warning.fg=#fe640b
+warning.fg=#df8e1d
 success.fg=#40a02b
 
-tab.fg=#9ca0b0
-tab.bg=#e6e9ef
+tab.fg=#7c7f93
+tab.bg=#ccd0da
 tab.selected.fg=#4c4f69
 tab.selected.bg=#eff1f5
 tab.selected.bold=true
-
-border.fg=#dce0e8
-border.bold=true
 
 msglist_unread.bold=true
 msglist_unread.fg=#7287fd
@@ -22,9 +20,10 @@ msglist_flagged.fg=#df8e1d
 msglist_flagged.bold=true
 msglist_result.fg=#1e66f5
 msglist_result.bold=true
-msglist_*.selected.bold=true
+msglist_marked.bg=#d7d9df
 msglist_*.selected.bg=#ccd0da
 
+dirlist_*.bg=#e6e9ef
 dirlist_*.selected.bold=true
 dirlist_*.selected.bg=#ccd0da
 
@@ -32,6 +31,14 @@ statusline_default.fg=#7c7f93
 statusline_default.bg=#ccd0da
 statusline_error.bold=true
 statusline_success.bold=true
+
+completion_default.bg=#9ca0b0
+completion_default.fg=#eff1f5
+
+spinner.fg=#dc8a78
+
+part_*.bg=#e6e9ef
+part_*.selected.fg=#dc8a78
 
 [viewer]
 url.fg=#1e66f5
