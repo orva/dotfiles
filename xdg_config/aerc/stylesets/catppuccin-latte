@@ -25,7 +25,7 @@ msglist_*.selected.bg=#ccd0da
 
 dirlist_*.bg=#e6e9ef
 dirlist_*.selected.bold=true
-dirlist_*.selected.bg=#ccd0da
+dirlist_*.selected.fg=#df8e1d
 
 statusline_default.fg=#7c7f93
 statusline_default.bg=#ccd0da
@@ -34,6 +34,8 @@ statusline_success.bold=true
 
 completion_default.bg=#9ca0b0
 completion_default.fg=#eff1f5
+
+selector_focused.fg=#df8e1d
 
 spinner.fg=#dc8a78
 
