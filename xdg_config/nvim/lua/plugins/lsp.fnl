@@ -15,7 +15,7 @@
   (let [telescope (require :telescope.builtin)
         opts {:buffer ev.buf}]
     (vim.keymap.set :n :K vim.lsp.buf.hover opts)
-    (vim.keymap.set :n :gD telescope.lsp_type_definitions opts)
+    (vim.keymap.set :n :gt telescope.lsp_type_definitions opts)
     (vim.keymap.set :n :gd telescope.lsp_definitions opts)
     (vim.keymap.set :n :gi telescope.lsp_implementations opts)
     (vim.keymap.set :n :gr telescope.lsp_references opts)
