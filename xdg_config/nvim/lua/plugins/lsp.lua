@@ -18,6 +18,7 @@ local function lsp_autocmd(ev)
   local telescope = require("telescope.builtin")
   local opts = {buffer = ev.buf}
   vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+  vim.keymap.set("n", "gs", telescope.lsp_workspace_symbols, opts)
   vim.keymap.set("n", "gt", telescope.lsp_type_definitions, opts)
   vim.keymap.set("n", "gd", telescope.lsp_definitions, opts)
   vim.keymap.set("n", "gi", telescope.lsp_implementations, opts)
