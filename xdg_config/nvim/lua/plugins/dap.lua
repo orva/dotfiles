@@ -52,4 +52,4 @@ local function config()
   dap.configurations.rust = {{name = "Debug rust", type = "gdb", request = "launch", program = _12_, cwd = "${workspaceFolder}", stopAtBeginningOfMainSubprogram = false}}
   return nil
 end
-return dep_spec("rcarriga/nvim-dap-ui", {name = "dap", dependencies = {"mfussenegger/nvim-dap"}, config = config})
+return dep_spec("rcarriga/nvim-dap-ui", {name = "dap", dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"}, config = config})

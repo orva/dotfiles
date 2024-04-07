@@ -25,5 +25,6 @@
            :stopAtBeginningOfMainSubprogram false}])))
 
 (dep-spec :rcarriga/nvim-dap-ui {:name :dap
-                                 :dependencies [:mfussenegger/nvim-dap]
+                                 :dependencies [:mfussenegger/nvim-dap
+                                                :nvim-neotest/nvim-nio]
                                  : config})
