@@ -41,21 +41,20 @@
                                                :rust_analyzer
                                                :clojure_lsp
                                                :tsserver
-                                               :fennel_language_server
                                                :marksman]})
     (lspconfig.clangd.setup {: capabilities})
     (lspconfig.pyright.setup {: capabilities})
     (lspconfig.rust_analyzer.setup {: capabilities})
     (lspconfig.clojure_lsp.setup {: capabilities})
     (lspconfig.tsserver.setup {: capabilities})
-    (lspconfig.fennel_language_server.setup {: capabilities
-                                             :single_file_support false
-                                             :root_dir (vcs-root-dir)
-                                             :settings {:fennel {:diagnostics {:globals [:vim]}}}})
+    (lspconfig.fennel_ls.setup {: capabilities
+                                :root_dir (vcs-root-dir)
+                                :settings {:fennel-ls {:extra-globals :vim}}})
     (lspconfig.marksman.setup {: capabilities
                                :single_file_support false
                                :filetypes [:markdown :md :mdx]
                                :root_dir (marksman-root-dir lsp-utils)})
+    (lspconfig.ltex.setup {: capabilities})
     (cmp.setup {:snippet {:expand (fn [args]
                                     (luasnip.lsp_expand (. args :body)))}
                 :mapping (cmp.mapping.preset.insert {:<C-u> (cmp.mapping.scroll_docs -4)
