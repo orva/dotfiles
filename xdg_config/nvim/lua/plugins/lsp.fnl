@@ -54,7 +54,9 @@
                                :single_file_support false
                                :filetypes [:markdown :md :mdx]
                                :root_dir (marksman-root-dir lsp-utils)})
-    (lspconfig.ltex.setup {: capabilities})
+
+    (lspconfig.ltex.setup {: capabilities
+                           :settings {:language :en-GB}})
     (cmp.setup {:snippet {:expand (fn [args]
                                     (luasnip.lsp_expand (. args :body)))}
                 :mapping (cmp.mapping.preset.insert {:<C-u> (cmp.mapping.scroll_docs -4)

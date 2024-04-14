@@ -50,7 +50,7 @@ local function config()
   lspconfig.tsserver.setup({capabilities = capabilities})
   lspconfig.fennel_ls.setup({capabilities = capabilities, root_dir = vcs_root_dir(), settings = {["fennel-ls"] = {["extra-globals"] = "vim"}}})
   lspconfig.marksman.setup({capabilities = capabilities, filetypes = {"markdown", "md", "mdx"}, root_dir = marksman_root_dir(lsp_utils), single_file_support = false})
-  lspconfig.ltex.setup({capabilities = capabilities})
+  lspconfig.ltex.setup({capabilities = capabilities, settings = {language = "en-GB"}})
   local function _4_(args)
     return luasnip.lsp_expand(args.body)
   end
