@@ -48,6 +48,7 @@
     (lspconfig.clojure_lsp.setup {: capabilities})
     (lspconfig.tsserver.setup {: capabilities})
     (lspconfig.fennel_ls.setup {: capabilities
+                                :single_file_support false
                                 :root_dir (vcs-root-dir)
                                 :settings {:fennel-ls {:extra-globals :vim}}})
     (lspconfig.marksman.setup {: capabilities
