@@ -4,26 +4,30 @@
 (fn fennel-project? [name _path]
   (not (vim.tbl_isempty (vim.tbl_filter #(name:match $) project-markers))))
 
-(fn find-local-fennel [path]
-  (let [[local-fennel] (vim.fs.find :fennel {: path})]
-    (or local-fennel :fennel)))
-
 (fn find-fennel []
   (let [[project-root] (vim.fs.find fennel-project?
                                     {:upward true
                                      :stop (vim.fn.getcwd)
                                      :path (-> (vim.api.nvim_buf_get_name 0)
                                                vim.fs.dirname)})]
-    (if project-root
-        (find-local-fennel project-root) :fennel)))
+    (. (vim.fs.find :fennel {:path project-root}) 1)))
+
+(fn use-project-fennel []
+  (let [local-fennel (find-fennel)]
+    (if local-fennel
+        (do
+          (vim.cmd.ConjureFnlStop)
+          (set vim.g.conjure#client#fennel#stdio#command local-fennel)
+          (vim.cmd.ConjureFnlStart))
+        (vim.notify "Could not find local fennel, continuing with global" vim.log.levels.WARN))))
+
+(fn use-love-fennel []
+  (vim.cmd.ConjureFnlStop)
+  (set vim.g.conjure#client#fennel#stdio#command "love .")
+  (vim.cmd.ConjureFnlStart))
 
 [(dep-spec :Olical/conjure
-           {:config (fn []
-                      ;; TODO: prevent automic REPL open and add own autocmd to
-                      ;;       do this this after opening fennel file.
-                      (set vim.g.conjure#client#fennel#stdio#command
-                           (find-fennel)))
-            :init (fn []
+           {:init (fn []
                     (set vim.g.conjure#filetypes
                          [:clojure
                           :fennel
@@ -37,7 +41,9 @@
                           :python
                           :sql])
                     (set vim.g.conjure#filetype#fennel
-                         :conjure.client.fennel.stdio))})
+                         :conjure.client.fennel.stdio)
+                    (vim.api.nvim_create_user_command :FnlUseProject use-project-fennel {})
+                    (vim.api.nvim_create_user_command :FnlUseLove use-love-fennel {}))})
  (dep-spec :tpope/vim-sexp-mappings-for-regular-people
            {:dependencies [:guns/vim-sexp :tpope/vim-repeat]
             :init #(set vim.g.sexp_filetypes
