@@ -50,7 +50,7 @@
     (lspconfig.fennel_ls.setup {: capabilities
                                 :single_file_support false
                                 :root_dir (vcs-root-dir)
-                                :settings {:fennel-ls {:extra-globals :vim}}})
+                                :settings {:fennel-ls {:extra-globals "vim love"}}})
     (lspconfig.marksman.setup {: capabilities
                                :single_file_support false
                                :filetypes [:markdown :md :mdx]
