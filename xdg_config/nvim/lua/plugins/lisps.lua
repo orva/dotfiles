@@ -31,6 +31,8 @@ end
 local function _5_()
   vim.g["conjure#filetypes"] = {"clojure", "fennel", "janet", "hy", "julia", "racket", "scheme", "lua", "lisp", "python", "sql"}
   vim.g["conjure#filetype#fennel"] = "conjure.client.fennel.stdio"
+  vim.g["conjure#filetype#scheme"] = "conjure.client.guile.socket"
+  vim.g["conjure#client#guile#socket#pipename"] = ".guile-repl.socket"
   vim.api.nvim_create_user_command("FnlUseProject", use_project_fennel, {})
   return vim.api.nvim_create_user_command("FnlUseLove", use_love_fennel, {})
 end

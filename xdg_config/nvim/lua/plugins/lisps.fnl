@@ -42,6 +42,10 @@
                           :sql])
                     (set vim.g.conjure#filetype#fennel
                          :conjure.client.fennel.stdio)
+                    (set vim.g.conjure#filetype#scheme
+                         :conjure.client.guile.socket)
+                    (set vim.g.conjure#client#guile#socket#pipename
+                         :.guile-repl.socket)
                     (vim.api.nvim_create_user_command :FnlUseProject use-project-fennel {})
                     (vim.api.nvim_create_user_command :FnlUseLove use-love-fennel {}))})
  (dep-spec :tpope/vim-sexp-mappings-for-regular-people

@@ -1,8 +1,15 @@
 #!/usr/bin/env bash
 
-set -xe
+GIT_ROOT=$(git rev-parse --show-toplevel)
+if test -n $GIT_ROOT; then
+  ROOT=$(pwd)
+else
+  ROOT=$GIT_ROOT
+fi
 
-SOCKET=$(git rev-parse --show-toplevel)/.guile-repl.socket
-if test -f $SOCKET; then rm $SOCKET; fi
+SOCKET=$ROOT/.guile-repl.socket
+if test -f $SOCKET; then
+  rm $SOCKET
+fi
 guile --listen=$SOCKET
 rm $SOCKET
